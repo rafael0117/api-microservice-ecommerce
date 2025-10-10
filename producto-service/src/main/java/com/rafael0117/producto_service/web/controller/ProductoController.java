@@ -25,4 +25,8 @@ public class ProductoController {
     public ResponseEntity<ProductoResponseDto> guardar(@RequestBody ProductoRequestDto productoRequestDto){
         return ResponseEntity.status(HttpStatus.CREATED).body(productoService.guardar(productoRequestDto));
     }
+    @GetMapping("/{id}")
+    public ResponseEntity<ProductoResponseDto> buscarPorId(@PathVariable Long id){
+        return ResponseEntity.ok(productoService.buscarPorId(id));
+    }
 }

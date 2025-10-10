@@ -34,4 +34,10 @@ public class ProductoServiceImpl implements ProductoService {
         return productoMapper.toDto(productoGuardado);
     }
 
+    @Override
+    public ProductoResponseDto buscarPorId(Long id) {
+        return productoRepository.findById(id).map(productoMapper::toDto)
+                .orElseThrow(()->new RuntimeException("No se encontro el Id"));
+    }
+
 }
