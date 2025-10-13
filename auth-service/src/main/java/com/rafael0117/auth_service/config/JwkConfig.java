@@ -4,27 +4,28 @@ import com.nimbusds.jose.jwk.JWKSet;
 import com.nimbusds.jose.jwk.RSAKey;
 import com.nimbusds.jose.jwk.source.ImmutableJWKSet;
 import com.nimbusds.jose.jwk.source.JWKSource;
+import com.nimbusds.jose.proc.SecurityContext;
+import lombok.RequiredArgsConstructor;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.ResourceLoader;
+import org.springframework.security.oauth2.jwt.JwtDecoder;
+import org.springframework.security.oauth2.server.authorization.config.annotation.web.configuration.OAuth2AuthorizationServerConfiguration;
 
 import java.io.InputStream;
 import java.security.KeyStore;
 import java.security.interfaces.RSAPrivateKey;
 import java.security.interfaces.RSAPublicKey;
 
+
 @Configuration
 @EnableConfigurationProperties(JwkProperties.class)
-public class JwkConfiguration {
+@RequiredArgsConstructor
+public class JwkConfig {
     private final JwkProperties jwkProperties;
     private final ResourceLoader resourceLoader;
-
-    public JwkConfiguration(JwkProperties jwkProperties, ResourceLoader resourceLoader) {
-        this.jwkProperties = jwkProperties;
-        this.resourceLoader = resourceLoader;
-    }
 
     @Bean
     JWKSource jwkSource () throws Exception {
@@ -34,7 +35,7 @@ public class JwkConfiguration {
             keyStore.load(inputStream, jwkProperties.keyPassword().toCharArray());
         }
         RSAPrivateKey rsaPrivateKey = (RSAPrivateKey) keyStore.getKey(
-          jwkProperties.keyAlias(), jwkProperties.keyPassword().toCharArray()
+                jwkProperties.keyAlias(), jwkProperties.keyPassword().toCharArray()
         );
 
         RSAPublicKey rsaPublicKey = (RSAPublicKey) keyStore
@@ -48,4 +49,5 @@ public class JwkConfiguration {
 
         return new ImmutableJWKSet(new JWKSet(rsaKey));
     }
+
 }

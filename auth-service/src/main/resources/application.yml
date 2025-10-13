@@ -1,0 +1,38 @@
+server:
+  port: 9000
+spring:
+  application:
+    name: auth-service
+  security:
+    oauth2:
+      authorizationserver:
+        client:
+          svc-consumer:
+            registration:
+              client-id: svc-consumer
+              client-secret: "{noop}s3cr3t"
+              client-authentication-methods:
+                - client_secret_basic
+              authorization-grant-types:
+                - client_credentials
+              scopes:
+                - producto.read
+                - producto.write
+                - categoria.read
+                - categoria.write
+                - pedido.write
+                - pedido.read
+            token:
+              access-token-time-to-live: PT5M
+
+app:
+  jwk:
+    keystore-path: "classpath:as-keystore.p12"
+    keystore-password: "changeit"
+    key-alias: "as-rsa"
+    key-password: "changeit"
+
+logging:
+  level:
+    org.springframework.security: TRACE
+    org.springframework.security.oauth2: TRACE
