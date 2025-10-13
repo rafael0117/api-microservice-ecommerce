@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="14df6a6c-9300-48a5-a93f-30265e99527f" name="Changes" comment="application.yml de producto-service">
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/Proyecto_DAWII.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Proyecto_DAWII.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dbnavigator.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/producto-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/producto-service/pom.xml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="package-info" />
+        <option value="Enum" />
+        <option value="Record" />
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;rafael0117&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/rafael0117/api-microservice-ecommerce.git&quot;,
+    &quot;accountId&quot;: &quot;6ffbc2e4-2982-4f77-9434-da75667df9c9&quot;
+  }
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 0
+}</component>
+  <component name="ProjectId" id="33nrwkIhByrGWgpOvLL7cgwp0ZX" />
+  <component name="ProjectViewState">
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.AuthServiceApplication.executor": "Run",
+    "Application.CarritoServiceApplication.executor": "Run",
+    "Application.EurekaServerApplication.executor": "Run",
+    "Application.PedidoServiceApplication.executor": "Run",
+    "Application.ProductoServiceApplication.executor": "Run",
+    "JUnit.All in auth-service (1).executor": "Debug",
+    "JUnit.All in auth-service.executor": "Run",
+    "Maven.auth-service [clean].executor": "Run",
+    "Maven.auth-service [install].executor": "Run",
+    "Maven.auth-service [validate].executor": "Run",
+    "Maven.eureka-server [clean].executor": "Run",
+    "Maven.eureka-server [install].executor": "Run",
+    "Maven.producto-service [clean].executor": "Run",
+    "Maven.producto-service [install].executor": "Run",
+    "Maven.producto-service [test].executor": "Run",
+    "Maven.producto-service [verify].executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "master",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "F:/Cibertec/DAWII_CICLO_6/Proyecto_DAWII/auth-service/src/main/java/com/rafael0117/auth_service/config",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "promo.profiler"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="F:\Cibertec\DAWII_CICLO_6\Proyecto_DAWII\auth-service\src\main\java\com\rafael0117\auth_service\config" />
+      <recent name="F:\Cibertec\DAWII_CICLO_6\Proyecto_DAWII\carrito-service\src\main\java\com\rafael0117\carrito_service\application" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.rafael0117.pedido_service.application.client" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.PedidoServiceApplication">
+    <configuration name="AuthServiceApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.rafael0117.auth_service.AuthServiceApplication" />
+      <module name="auth-service" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.rafael0117.auth_service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PedidoServiceApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.rafael0117.pedido_service.PedidoServiceApplication" />
+      <module name="pedido-service" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.rafael0117.pedido_service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ProductoServiceApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.rafael0117.producto_service.ProductoServiceApplication" />
+      <module name="producto-service" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.rafael0117.producto_service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="All in auth-service (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="auth-service" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="All in auth-service" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="auth-service" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.AuthServiceApplication" />
+        <item itemvalue="Application.ProductoServiceApplication" />
+        <item itemvalue="Application.PedidoServiceApplication" />
+        <item itemvalue="JUnit.All in auth-service (1)" />
+        <item itemvalue="JUnit.All in auth-service" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="14df6a6c-9300-48a5-a93f-30265e99527f" name="Changes" comment="" />
+      <created>1759963917598</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1759963917598</updated>
+    </task>
+    <task id="LOCAL-00001" summary="producto-service init">
+      <option name="closed" value="true" />
+      <created>1759964934278</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1759964934278</updated>
+    </task>
+    <task id="LOCAL-00002" summary="eureka-server">
+      <option name="closed" value="true" />
+      <created>1759966694526</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1759966694526</updated>
+    </task>
+    <task id="LOCAL-00003" summary="pedido-service">
+      <option name="closed" value="true" />
+      <created>1760060641959</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1760060641959</updated>
+    </task>
+    <task id="LOCAL-00004" summary="add buscarPorId Producto">
+      <option name="closed" value="true" />
+      <created>1760060687766</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1760060687766</updated>
+    </task>
+    <task id="LOCAL-00005" summary="api-gateway">
+      <option name="closed" value="true" />
+      <created>1760061880831</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1760061880831</updated>
+    </task>
+    <task id="LOCAL-00006" summary="auth-service">
+      <option name="closed" value="true" />
+      <created>1760330847105</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1760330847105</updated>
+    </task>
+    <task id="LOCAL-00007" summary="carrito-service">
+      <option name="closed" value="true" />
+      <created>1760388040029</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1760388040029</updated>
+    </task>
+    <task id="LOCAL-00008" summary="pedido-service modified">
+      <option name="closed" value="true" />
+      <created>1760388276035</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1760388276035</updated>
+    </task>
+    <task id="LOCAL-00009" summary="auth-service modified">
+      <option name="closed" value="true" />
+      <created>1760388374904</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1760388374904</updated>
+    </task>
+    <task id="LOCAL-00010" summary="SecurityConfig de producto-service">
+      <option name="closed" value="true" />
+      <created>1760388467199</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1760388467199</updated>
+    </task>
+    <task id="LOCAL-00011" summary="application.yml de producto-service">
+      <option name="closed" value="true" />
+      <created>1760388520419</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1760388520419</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
+    <servers />
+  </component>
+  <component name="TerminalProjectNonSharedOptionsProvider">
+    <envs>
+      <env key="Path" value="C:\Program Files\Java\jdk-21\bin" />
+    </envs>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="producto-service init" />
+    <MESSAGE value="eureka-server" />
+    <MESSAGE value="pedido-service" />
+    <MESSAGE value="add buscarPorId Producto" />
+    <MESSAGE value="api-gateway" />
+    <MESSAGE value="auth-service" />
+    <MESSAGE value="carrito-service" />
+    <MESSAGE value="pedido-service modified" />
+    <MESSAGE value="auth-service modified" />
+    <MESSAGE value="SecurityConfig de producto-service" />
+    <MESSAGE value="application.yml de producto-service" />
+    <option name="LAST_COMMIT_MESSAGE" value="application.yml de producto-service" />
+  </component>
+</project>
