@@ -29,4 +29,10 @@ public class ProductoController {
     public ResponseEntity<ProductoResponseDto> buscarPorId(@PathVariable Long id){
         return ResponseEntity.ok(productoService.buscarPorId(id));
     }
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> eliminar(@PathVariable Long id) {
+        productoService.eliminar(id); // Llama al método del service
+        return ResponseEntity.noContent().build(); // Devuelve 204 No Content
+    }
+
 }

@@ -10,6 +10,7 @@ import com.rafael0117.producto_service.domain.repository.ProductoRepository;
 import com.rafael0117.producto_service.web.dto.categoria.CategoriaRequestDto;
 import com.rafael0117.producto_service.web.dto.producto.ProductoRequestDto;
 import com.rafael0117.producto_service.web.dto.producto.ProductoResponseDto;
+import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -38,6 +39,15 @@ public class ProductoServiceImpl implements ProductoService {
     public ProductoResponseDto buscarPorId(Long id) {
         return productoRepository.findById(id).map(productoMapper::toDto)
                 .orElseThrow(()->new RuntimeException("No se encontro el Id"));
+    }
+
+    @Override
+    public void eliminar(Long id) {
+        if (productoRepository.existsById(id)) {
+            productoRepository.deleteById(id);
+        } else {
+            throw new EntityNotFoundException("Producto no encontrado con id: " + id);
+        }
     }
 
 }

@@ -10,4 +10,5 @@ public interface ProductoService {
     List<ProductoResponseDto> listar();
     ProductoResponseDto guardar(ProductoRequestDto productoRequestDto);
     ProductoResponseDto buscarPorId(Long id);
+    void eliminar(Long id);
 }
