@@ -45,6 +45,7 @@ public class ProductoMapperImpl implements ProductoMapper {
                 .talla(producto.getTalla())
                 .color(producto.getColor())
                 .imagen(producto.getImagen())
+                .categoriaId(producto.getCategoria() != null ? producto.getCategoria().getId() : null)
                 .categoriaNombre(
                         producto.getCategoria() != null ? producto.getCategoria().getNombre() : null
                 )

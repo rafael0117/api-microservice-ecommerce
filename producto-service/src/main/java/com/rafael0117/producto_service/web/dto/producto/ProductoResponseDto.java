@@ -19,5 +19,6 @@ public class ProductoResponseDto {
     private String talla;
     private String color;
     private String imagen;
+    private Long categoriaId;
     private String categoriaNombre;
 }
