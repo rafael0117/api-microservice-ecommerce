@@ -16,14 +16,14 @@ spring:
               authorization-grant-types:
                 - client_credentials
               scopes:
-                - producto.read
+
                 - producto.write
                 - categoria.read
                 - categoria.write
                 - pedido.write
                 - pedido.read
             token:
-              access-token-time-to-live: PT5M
+              access-token-time-to-live: PT1H
 
 app:
   jwk:
