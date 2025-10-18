@@ -1,24 +1,34 @@
 package com.rafael0117.carrito_service.domain.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
+// Carrito.java
 @Entity
-@Getter
-@Setter
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@Table(name = "carritos")
+@Table(name = "carrito")
 public class Carrito {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    private Long usuarioId;
-
+    private Long idUsuario;
+    private LocalDateTime fechaCreacion;
     @OneToMany(mappedBy = "carrito", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<ItemCarrito> items;
+    @JsonManagedReference(value = "carrito-detalle")
+    private List<DetalleCarrito> detalles = new ArrayList<>();
+    @PrePersist
+    public void prePersist() {
+        if (fechaCreacion == null) {
+            fechaCreacion = LocalDateTime.now();
+        }
+    }
+
+
 }
