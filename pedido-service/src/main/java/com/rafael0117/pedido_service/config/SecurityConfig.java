@@ -12,6 +12,8 @@ public class SecurityConfig {
     SecurityFilterChain securityFilterChain (HttpSecurity httpSecurity)throws Exception{
         httpSecurity
                 .csrf(AbstractHttpConfigurer::disable)
+                .cors(Customizer.withDefaults())
+
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(HttpMethod.GET, "/api/pedidos/**")
                         .hasAuthority("SCOPE_pedido.read")
