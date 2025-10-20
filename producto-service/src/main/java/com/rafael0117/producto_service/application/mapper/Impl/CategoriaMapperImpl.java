@@ -16,6 +16,7 @@ public class CategoriaMapperImpl implements CategoriaMapper {
 
         return Categoria.builder()
                 .nombre(categoriaRequestDto.getNombre())
+                .estado(categoriaRequestDto.getEstado())
                 .build();
     }
 
@@ -28,6 +29,7 @@ public class CategoriaMapperImpl implements CategoriaMapper {
         return CategoriaResponseDto.builder()
                 .id(categoria.getId())
                 .nombre(categoria.getNombre())
+                .estado(categoria.getEstado())
                 .build();
     }
 }

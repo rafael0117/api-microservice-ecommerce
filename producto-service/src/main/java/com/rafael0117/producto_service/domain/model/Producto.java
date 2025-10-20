@@ -3,10 +3,14 @@ package com.rafael0117.producto_service.domain.model;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.math.BigDecimal;
+
+
+import java.util.ArrayList;
+import java.util.List;
+
 
 @Entity
-@Table(name = "productos")
+@Table(name = "producto")
 @Getter
 @Setter
 @AllArgsConstructor
@@ -24,10 +28,12 @@ public class Producto {
     private Integer reservado;
     private String talla;
     private String color;
-    private String imagen;
 
-    @ManyToOne
-    @JoinColumn(name = "categoria_id")
-    private Categoria categoria;
+    private Long categoriaId;
+
+    @Builder.Default
+    @OneToMany(mappedBy="producto", cascade=CascadeType.ALL, orphanRemoval=true, fetch=FetchType.LAZY)
+    private List<ProductoImagen> imagenes = new ArrayList<>();
+
 
 }

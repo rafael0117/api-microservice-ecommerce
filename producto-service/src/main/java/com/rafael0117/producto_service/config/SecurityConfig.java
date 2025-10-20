@@ -10,9 +10,11 @@ import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
 public class SecurityConfig {
+
+    /*
     @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
-        httpSecurity
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+        http
                 .csrf(AbstractHttpConfigurer::disable)
                 .cors(Customizer.withDefaults())
                 .authorizeHttpRequests(auth -> auth
@@ -28,9 +30,23 @@ public class SecurityConfig {
                         .permitAll()
                         .requestMatchers(HttpMethod.DELETE,"/api/productos/**")
                         .permitAll()
-                )
-                .oauth2ResourceServer(oauth ->
-                        oauth.jwt(Customizer.withDefaults()));
-        return httpSecurity.build();
+                );
+               // .oauth2ResourceServer(oauth ->
+                       // oauth.jwt(Customizer.withDefaults()));
+        return http.build();
+    }*/
+
+    @Bean
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+        http
+                .csrf(AbstractHttpConfigurer::disable)
+                .cors(Customizer.withDefaults()) // 👈 Habilita el CORS global (usa tu CorsConfig)
+                .authorizeHttpRequests(auth -> auth
+                        .requestMatchers("/api/categorias/**").permitAll()
+                        .requestMatchers("/api/productos/**").permitAll()
+                        .anyRequest().permitAll()
+                );
+
+        return http.build();
     }
 }

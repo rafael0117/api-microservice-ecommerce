@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/api/categorias")
 @RequiredArgsConstructor
@@ -20,8 +21,18 @@ public class CategoriaController {
     public ResponseEntity<List<CategoriaResponseDto>>listar(){
         return ResponseEntity.ok(service.listar());
     }
+
     @PostMapping
     public ResponseEntity<CategoriaResponseDto> guardar(@RequestBody CategoriaRequestDto categoriaRequestDto){
         return ResponseEntity.status(HttpStatus.CREATED).body(service.guardar(categoriaRequestDto));
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<CategoriaResponseDto> actualizar(
+            @PathVariable Long id,
+            @RequestBody CategoriaRequestDto categoriaRequestDto) {
+
+        CategoriaResponseDto actualizada = service.actualizar(id, categoriaRequestDto);
+        return ResponseEntity.ok(actualizada);
     }
 }

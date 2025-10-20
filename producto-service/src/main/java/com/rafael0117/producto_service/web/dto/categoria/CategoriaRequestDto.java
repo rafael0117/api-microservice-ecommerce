@@ -9,4 +9,5 @@ import lombok.*;
 @Builder
 public class CategoriaRequestDto {
     private String nombre;
+    private Boolean estado;
 }

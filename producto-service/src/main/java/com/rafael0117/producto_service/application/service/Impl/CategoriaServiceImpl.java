@@ -28,4 +28,21 @@ public class CategoriaServiceImpl implements CategoriaService {
         Categoria categoriaRegistrada = categoriaRepository.save(categoria);
         return categoriaMapper.toDto(categoriaRegistrada);
     }
+
+    @Override
+    public CategoriaResponseDto actualizar(Long id, CategoriaRequestDto dto) {
+        Categoria categoria = categoriaRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Categoría no encontrada con ID: " + id));
+
+        if (dto.getNombre() != null) {
+            categoria.setNombre(dto.getNombre());
+        }
+
+        if (dto.getEstado() != null) {
+            categoria.setEstado(dto.getEstado());
+        }
+
+        Categoria actualizada = categoriaRepository.save(categoria);
+        return categoriaMapper.toDto(actualizada);
+    }
 }
