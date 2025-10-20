@@ -28,5 +28,7 @@ eureka:
   instance:
     prefer-ip-address: true
 app:
+  carrito:
+    base-url: http://localhost:8185
   producto:
     base-url: http://localhost:8181
