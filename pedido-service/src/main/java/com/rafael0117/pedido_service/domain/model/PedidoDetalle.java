@@ -1,0 +1,26 @@
+package com.rafael0117.pedido_service.domain.model;
+
+import jakarta.persistence.*;
+import lombok.*;
+
+import java.math.BigDecimal;
+
+@Entity @Table(name = "pedido_detalles")
+@Getter @Setter @NoArgsConstructor @AllArgsConstructor @Builder
+public class PedidoDetalle {
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    private Long idProducto;
+    private String nombreProducto;
+
+    @Column(precision = 18, scale = 2) private BigDecimal precioUnitario;
+    private Integer cantidad;
+    private String talla;
+    private String color;
+
+    @Column(precision = 18, scale = 2) private BigDecimal totalLinea;
+
+    @ManyToOne(fetch = FetchType.LAZY) @JoinColumn(name = "pedido_id")
+    private Pedido pedido;
+}

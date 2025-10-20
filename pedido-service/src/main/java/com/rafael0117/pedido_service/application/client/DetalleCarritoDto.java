@@ -9,14 +9,12 @@ import java.math.BigDecimal;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class ProductoResponseDto {
+public class DetalleCarritoDto {
     private Long id;
-    private String nombre;
-    private String descripcion;
-    private BigDecimal precio;
-    private Integer stock;
+    private Long idProducto;
+    private String nombreProducto; // puede venir vacío y lo recalculamos desde producto
+    private BigDecimal precio;     // idem
+    private Integer cantidad;
     private String talla;
     private String color;
-    private String imagen;
-    private String categoriaNombre;
 }

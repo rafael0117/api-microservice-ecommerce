@@ -12,4 +12,7 @@ public interface ProductoService {
     ProductoResponseDto guardar(ProductoRequestDto productoRequestDto,  List<MultipartFile> imagenes);
     ProductoResponseDto buscarPorId(Long id);
     void eliminar(Long id);
+    void reservar(Long id, int cantidad);
+    void descontar(Long id, int cantidad);
+    void liberar(Long id, int cantidad);
 }

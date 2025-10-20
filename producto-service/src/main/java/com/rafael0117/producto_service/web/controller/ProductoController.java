@@ -61,5 +61,21 @@ public class ProductoController {
         productoService.eliminar(id); // Llama al método del service
         return ResponseEntity.noContent().build(); // Devuelve 204 No Content
     }
+    @PostMapping("/{id}/reservar")
+    public ResponseEntity<Void> reservar(@PathVariable Long id, @RequestParam Integer cantidad) {
+        productoService.reservar(id, cantidad != null ? cantidad : 0);
+        return ResponseEntity.noContent().build();
+    }
 
+    @PostMapping("/{id}/descontar")
+    public ResponseEntity<Void> descontar(@PathVariable Long id, @RequestParam Integer cantidad) {
+        productoService.descontar(id, cantidad != null ? cantidad : 0);
+        return ResponseEntity.noContent().build();
+    }
+
+    @PostMapping("/{id}/liberar")
+    public ResponseEntity<Void> liberar(@PathVariable Long id, @RequestParam Integer cantidad) {
+        productoService.liberar(id, cantidad != null ? cantidad : 0);
+        return ResponseEntity.noContent().build();
+    }
 }

@@ -20,7 +20,7 @@ public class CarritoController {
         return ResponseEntity.ok(carritoService.agregarProducto(idUsuario, detalle));
     }
 
-    @GetMapping
+    @GetMapping({ "", "/1" })
     public ResponseEntity<Carrito> obtenerCarrito() {
         Long idUsuario = 1L;
         return ResponseEntity.ok(carritoService.obtenerCarrito(idUsuario));
