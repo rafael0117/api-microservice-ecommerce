@@ -1,6 +1,7 @@
 package com.rafael0117.auth_service.application.service.impl;
 
 
+import com.rafael0117.auth_service.application.mapper.UsuarioMapper;
 import com.rafael0117.auth_service.application.service.AuthService;
 import com.rafael0117.auth_service.domain.model.RefreshToken;
 import com.rafael0117.auth_service.domain.model.Role;
@@ -11,8 +12,10 @@ import com.rafael0117.auth_service.domain.repository.UserRepository;
 import com.rafael0117.auth_service.security.util.JwtUtil;
 import com.rafael0117.auth_service.web.dto.RegistrarRequestDTO;
 import com.rafael0117.auth_service.web.dto.TokenPairResponse;
+import com.rafael0117.auth_service.web.dto.UsuarioDTO;
 import com.rafael0117.auth_service.web.dto.login.LoginRequest;
 import com.rafael0117.auth_service.web.dto.login.LoginResponse;
+import io.jsonwebtoken.Jwt;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 
@@ -36,6 +39,7 @@ public class AuthServiceImpl implements AuthService {
     private final UserRepository usuarioRepository;
     private final RefreshTokenRepository refreshTokenRepository;
     private final PasswordEncoder passwordEncoder;
+    private final UsuarioMapper mapper;
     private final JwtUtil jwtUtil;
 
     @Override
@@ -150,5 +154,34 @@ public class AuthServiceImpl implements AuthService {
 
         usuarioRepository.save(usuario);
         return "Usuario registrado exitosamente";
+    }
+
+    @Transactional
+    @Override
+    public UsuarioDTO buscarPorCodigo(Long id) {
+        return usuarioRepository.findById(id)
+                .map(mapper::toDto)
+                .orElseThrow(() -> new RuntimeException("Usuario " + id + " no existe"));
+    }
+
+    @Override
+    public UsuarioDTO me(String authorizationHeader) {
+        if (authorizationHeader == null || !authorizationHeader.startsWith("Bearer ")) {
+            throw new RuntimeException("Falta Authorization Bearer");
+        }
+        String token = authorizationHeader.substring(7);
+
+        if (!jwtUtil.validateToken(token)) {
+            throw new RuntimeException("Token inválido/expirado");
+        }
+        if (!"access".equals(jwtUtil.extractType(token))) {
+            throw new RuntimeException("Se requiere access token");
+        }
+
+        String username = jwtUtil.extractUsername(token);
+        var user = usuarioRepository.findByUsername(username)
+                .orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
+
+        return mapper.toDto(user);
     }
 }

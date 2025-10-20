@@ -12,11 +12,7 @@ spring:
     properties:
       hibernate:
         format_sql: true
-  security:
-    oauth2:
-      resourceserver:
-        jwt:
-          issuer-uri: http://localhost:9000
+
 server:
   port: 8183
 eureka:
@@ -32,3 +28,10 @@ app:
     base-url: http://localhost:8185
   producto:
     base-url: http://localhost:8181
+logging:
+  level:
+    org.springframework.security: DEBUG
+    org.springframework.security.web: DEBUG
+    org.springframework.security.oauth2: DEBUG
+    org.springframework.boot.autoconfigure.security: DEBUG
+    org.springframework.web: INFO

@@ -8,10 +8,17 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-@Entity @Table(name = "pedidos")
-@Getter @Setter @NoArgsConstructor @AllArgsConstructor @Builder
+@Entity
+@Table(name = "pedidos")
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class Pedido {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private Long idUsuario;
@@ -21,15 +28,21 @@ public class Pedido {
     @Enumerated(EnumType.STRING)
     private EstadoPedido estado;
 
-    @Column(precision = 18, scale = 2) private BigDecimal subtotal;
-    @Column(precision = 18, scale = 2) private BigDecimal impuesto;
+    @Column(precision = 18, scale = 2)
+    private BigDecimal subtotal;
 
-    @Column(precision = 18, scale = 2) private BigDecimal total;
+    @Column(precision = 18, scale = 2)
+    private BigDecimal impuesto;
+
+    @Column(precision = 18, scale = 2)
+    private BigDecimal total;
 
     private String direccionEnvio;
+
     @Enumerated(EnumType.STRING)
     private MetodoPago metodoPago;
 
+    @Builder.Default
     @OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<PedidoDetalle> detalles = new ArrayList<>();
 

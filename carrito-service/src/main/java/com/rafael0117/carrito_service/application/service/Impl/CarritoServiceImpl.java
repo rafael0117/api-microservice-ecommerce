@@ -13,12 +13,14 @@ import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import java.util.ArrayList;
 import java.util.Optional;
+
 
 @Service
 @RequiredArgsConstructor
 public class CarritoServiceImpl implements CarritoService {
+
     private final CarritoRepository carritoRepository;
     private final DetalleCarritoRepository detalleRepository;
     private final ProductoClient productoClient;
@@ -27,51 +29,56 @@ public class CarritoServiceImpl implements CarritoService {
     public Carrito obtenerCarrito(Long idUsuario) {
         return carritoRepository.findByIdUsuario(idUsuario)
                 .orElseGet(() -> carritoRepository.save(Carrito.builder()
-                        .idUsuario(idUsuario).build()));
+                        .idUsuario(idUsuario)
+                        .detalles(new ArrayList<>())
+                        .build()));
     }
 
     @Override
-    public Carrito agregarProducto(Long idUsuario, DetalleCarrito detalle) {
-        // 1️⃣ Obtener el carrito del usuario (lo crea si no existe)
+    @Transactional
+    public Carrito agregarProducto(Long idUsuario, DetalleCarrito detalleEntrada) {
         Carrito carrito = obtenerCarrito(idUsuario);
-
-        // 2️⃣ Consultar el producto desde producto-service usando Feign
-        ProductoResponseDto producto = productoClient.buscarPorId(detalle.getIdProducto());
-        if (producto == null) {
-            throw new RuntimeException("Producto no encontrado con ID: " + detalle.getIdProducto());
+        if (carrito.getDetalles() == null) {
+            carrito.setDetalles(new ArrayList<>());
         }
 
-        // 3️⃣ Validar stock
-        if (producto.getStock() < detalle.getCantidad()) {
+        // Consultar producto desde producto-service
+        ProductoResponseDto producto = productoClient.buscarPorId(detalleEntrada.getIdProducto());
+        if (producto == null) {
+            throw new RuntimeException("Producto no encontrado con ID: " + detalleEntrada.getIdProducto());
+        }
+
+        // Validar stock
+        if (producto.getStock() < detalleEntrada.getCantidad()) {
             throw new RuntimeException("Stock insuficiente para el producto: " + producto.getNombre());
         }
 
-        // 4️⃣ Verificar si el producto ya está en el carrito
-        Optional<DetalleCarrito> existente = carrito.getDetalles().stream()
-                .filter(d -> d.getIdProducto().equals(detalle.getIdProducto()))
+        // Verificar si ya existe el producto en el carrito
+        Optional<DetalleCarrito> existenteOpt = carrito.getDetalles().stream()
+                .filter(d -> d.getIdProducto().equals(detalleEntrada.getIdProducto()))
                 .findFirst();
 
-        if (existente.isPresent()) {
-            // Si ya existe, sumamos la cantidad
-            DetalleCarrito item = existente.get();
-            item.setCantidad(item.getCantidad() + detalle.getCantidad());
+        if (existenteOpt.isPresent()) {
+            DetalleCarrito existente = existenteOpt.get();
+            existente.setCantidad(existente.getCantidad() + detalleEntrada.getCantidad());
+            detalleRepository.save(existente);
         } else {
-            // 5️⃣ Si es nuevo, agregamos los datos del producto al detalle
-            detalle.setNombreProducto(producto.getNombre());
-            detalle.setPrecio(producto.getPrecio());
-            detalle.setCarrito(carrito);
+            // Crear nuevo detalle
+            DetalleCarrito nuevo = new DetalleCarrito();
+            nuevo.setIdProducto(detalleEntrada.getIdProducto());
+            nuevo.setCantidad(detalleEntrada.getCantidad());
+            nuevo.setNombreProducto(producto.getNombre());
+            nuevo.setPrecio(producto.getPrecio());
+            nuevo.setCarrito(carrito);
 
-            carrito.getDetalles().add(detalle);
+            carrito.getDetalles().add(nuevo);
+            detalleRepository.save(nuevo);
         }
 
-        // 6️⃣ Guardar carrito completo (se guarda en cascada si está configurado)
         carritoRepository.save(carrito);
-
-        // 7️⃣ Devolver carrito actualizado
         return carritoRepository.findById(carrito.getId())
                 .orElseThrow(() -> new RuntimeException("Error al actualizar el carrito"));
     }
-
 
     @Override
     @Transactional
@@ -83,13 +90,10 @@ public class CarritoServiceImpl implements CarritoService {
         }
     }
 
-
-
     @Override
     public void vaciarCarrito(Long idUsuario) {
         Carrito carrito = obtenerCarrito(idUsuario);
         carrito.getDetalles().clear();
         carritoRepository.save(carrito);
     }
-
 }

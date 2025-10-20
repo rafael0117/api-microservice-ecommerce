@@ -2,8 +2,10 @@ package com.rafael0117.auth_service.application.service;
 
 import com.rafael0117.auth_service.web.dto.RegistrarRequestDTO;
 import com.rafael0117.auth_service.web.dto.TokenPairResponse;
+import com.rafael0117.auth_service.web.dto.UsuarioDTO;
 import com.rafael0117.auth_service.web.dto.login.LoginRequest;
 import com.rafael0117.auth_service.web.dto.login.LoginResponse;
+import io.jsonwebtoken.Jwt;
 
 public interface AuthService {
     // accesos
@@ -14,4 +16,6 @@ public interface AuthService {
 
     // registro
     String register(RegistrarRequestDTO registerRequest);
+    UsuarioDTO buscarPorCodigo(Long id);
+    UsuarioDTO me(String authorizationHeader);
 }

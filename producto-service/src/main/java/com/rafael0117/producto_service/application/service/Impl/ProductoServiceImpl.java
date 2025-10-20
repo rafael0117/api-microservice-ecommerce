@@ -8,6 +8,7 @@ import com.rafael0117.producto_service.application.service.ProductoService;
 import com.rafael0117.producto_service.domain.model.Producto;
 import com.rafael0117.producto_service.domain.model.ProductoImagen;
 
+import com.rafael0117.producto_service.domain.repository.CategoriaRepository;
 import com.rafael0117.producto_service.domain.repository.ProductoImagenRepository;
 import com.rafael0117.producto_service.domain.repository.ProductoRepository;
 
