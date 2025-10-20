@@ -15,9 +15,13 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/pedidos")
 @RequiredArgsConstructor
 public class PedidoController {
+
     private final PedidoService pedidoService;
+
     @PostMapping
-    public ResponseEntity<PedidoResponseDto> crearPedido(@RequestBody PedidoRequestDto request){
-        return ResponseEntity.status(HttpStatus.CREATED).body(pedidoService.crearPedido(request));
+    public ResponseEntity<PedidoResponseDto> crear(@RequestBody PedidoRequestDto request) {
+        // Si prefieres idUsuario por header: request.setIdUsuario(Long.valueOf(reqHeader))
+        PedidoResponseDto dto = pedidoService.crearDesdeCarrito(request);
+        return ResponseEntity.ok(dto);
     }
 }

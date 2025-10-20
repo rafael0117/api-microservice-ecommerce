@@ -16,13 +16,12 @@ public class SecurityConfig {
 
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(HttpMethod.GET, "/api/pedidos/**")
-                        .hasAuthority("SCOPE_pedido.read")
+                        .permitAll()
                         .requestMatchers(HttpMethod.POST, "/api/pedidos/**")
-                        .hasAuthority("SCOPE_pedido.write")
-                )
+                        .permitAll()
+                );
 
-                .oauth2ResourceServer(oauth ->
-                        oauth.jwt(Customizer.withDefaults()));
+
         return httpSecurity.build();
     }
 }
