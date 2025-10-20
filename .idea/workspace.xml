@@ -4,32 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="14df6a6c-9300-48a5-a93f-30265e99527f" name="Changes" comment="application.yml de producto-service">
-      <change afterPath="$PROJECT_DIR$/producto-service/src/main/java/com/rafael0117/producto_service/application/service/ImageStorage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/producto-service/src/main/java/com/rafael0117/producto_service/config/StaticResourceConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/producto-service/src/main/java/com/rafael0117/producto_service/domain/model/ProductoImagen.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/producto-service/src/main/java/com/rafael0117/producto_service/domain/repository/ProductoImagenRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+    <list default="true" id="14df6a6c-9300-48a5-a93f-30265e99527f" name="Changes" comment="CAMBIO ANFOSE">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pedido-service/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/pedido-service/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/producto-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/producto-service/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/producto-service/src/main/java/com/rafael0117/producto_service/application/mapper/Impl/CategoriaMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/producto-service/src/main/java/com/rafael0117/producto_service/application/mapper/Impl/CategoriaMapperImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/producto-service/src/main/java/com/rafael0117/producto_service/application/mapper/Impl/ProductoMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/producto-service/src/main/java/com/rafael0117/producto_service/application/mapper/Impl/ProductoMapperImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/producto-service/src/main/java/com/rafael0117/producto_service/application/mapper/ProductoMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/producto-service/src/main/java/com/rafael0117/producto_service/application/mapper/ProductoMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/producto-service/src/main/java/com/rafael0117/producto_service/application/service/CategoriaService.java" beforeDir="false" afterPath="$PROJECT_DIR$/producto-service/src/main/java/com/rafael0117/producto_service/application/service/CategoriaService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/producto-service/src/main/java/com/rafael0117/producto_service/application/service/Impl/CategoriaServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/producto-service/src/main/java/com/rafael0117/producto_service/application/service/Impl/CategoriaServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/producto-service/src/main/java/com/rafael0117/producto_service/application/service/Impl/ProductoServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/producto-service/src/main/java/com/rafael0117/producto_service/application/service/Impl/ProductoServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/producto-service/src/main/java/com/rafael0117/producto_service/application/service/ProductoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/producto-service/src/main/java/com/rafael0117/producto_service/application/service/ProductoService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/producto-service/src/main/java/com/rafael0117/producto_service/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/producto-service/src/main/java/com/rafael0117/producto_service/config/SecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/producto-service/src/main/java/com/rafael0117/producto_service/domain/model/Categoria.java" beforeDir="false" afterPath="$PROJECT_DIR$/producto-service/src/main/java/com/rafael0117/producto_service/domain/model/Categoria.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/producto-service/src/main/java/com/rafael0117/producto_service/domain/model/Producto.java" beforeDir="false" afterPath="$PROJECT_DIR$/producto-service/src/main/java/com/rafael0117/producto_service/domain/model/Producto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/producto-service/src/main/java/com/rafael0117/producto_service/web/controller/CategoriaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/producto-service/src/main/java/com/rafael0117/producto_service/web/controller/CategoriaController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/producto-service/src/main/java/com/rafael0117/producto_service/web/controller/ProductoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/producto-service/src/main/java/com/rafael0117/producto_service/web/controller/ProductoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/producto-service/src/main/java/com/rafael0117/producto_service/web/dto/categoria/CategoriaRequestDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/producto-service/src/main/java/com/rafael0117/producto_service/web/dto/categoria/CategoriaRequestDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/producto-service/src/main/java/com/rafael0117/producto_service/web/dto/categoria/CategoriaResponseDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/producto-service/src/main/java/com/rafael0117/producto_service/web/dto/categoria/CategoriaResponseDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/producto-service/src/main/java/com/rafael0117/producto_service/web/dto/producto/ProductoRequestDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/producto-service/src/main/java/com/rafael0117/producto_service/web/dto/producto/ProductoRequestDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/producto-service/src/main/java/com/rafael0117/producto_service/web/dto/producto/ProductoResponseDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/producto-service/src/main/java/com/rafael0117/producto_service/web/dto/producto/ProductoResponseDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/producto-service/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/producto-service/src/main/resources/application.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -273,7 +250,15 @@
       <option name="project" value="LOCAL" />
       <updated>1760388520419</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="CAMBIO ANFOSE">
+      <option name="closed" value="true" />
+      <created>1760925294194</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1760925294194</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TerminalProjectNonSharedOptionsProvider">
@@ -304,6 +289,7 @@
     <MESSAGE value="auth-service modified" />
     <MESSAGE value="SecurityConfig de producto-service" />
     <MESSAGE value="application.yml de producto-service" />
-    <option name="LAST_COMMIT_MESSAGE" value="application.yml de producto-service" />
+    <MESSAGE value="CAMBIO ANFOSE" />
+    <option name="LAST_COMMIT_MESSAGE" value="CAMBIO ANFOSE" />
   </component>
 </project>
