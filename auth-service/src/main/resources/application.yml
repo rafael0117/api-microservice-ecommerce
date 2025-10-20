@@ -1,38 +1,24 @@
 server:
   port: 9000
+
 spring:
-  application:
-    name: auth-service
-  security:
-    oauth2:
-      authorizationserver:
-        client:
-          svc-consumer:
-            registration:
-              client-id: svc-consumer
-              client-secret: "{noop}s3cr3t"
-              client-authentication-methods:
-                - client_secret_basic
-              authorization-grant-types:
-                - client_credentials
-              scopes:
+  datasource:
+    url: jdbc:mysql://localhost:3306/db_auth?useSSL=false&serverTimezone=UTC
+    username: root
+    password: mysql
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate.format_sql: true
 
-                - producto.write
-                - categoria.read
-                - categoria.write
-                - pedido.write
-                - pedido.read
-            token:
-              access-token-time-to-live: PT1H
+jwt:
+  # En PROD cámbialo por una variable de entorno: JWT_SECRET
+  secret: TuClaveSuperSecretaMuyLarga1234567890_ChangeMe_32chars_min
+  access-expiration: 900000       # 15 minutos
+  refresh-expiration: 604800000   # 7 días
 
-app:
-  jwk:
-    keystore-path: "classpath:as-keystore.p12"
-    keystore-password: "changeit"
-    key-alias: "as-rsa"
-    key-password: "changeit"
-
-logging:
-  level:
-    org.springframework.security: TRACE
-    org.springframework.security.oauth2: TRACE
+# CORS sencillo para pruebas locales
+cors:
+  allowed-origins: "http://localhost:4200"
