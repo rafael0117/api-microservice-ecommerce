@@ -10,4 +10,5 @@ import lombok.*;
 public class CategoriaResponseDto {
     private Long id;
     private String nombre;
+    private Boolean estado;
 }

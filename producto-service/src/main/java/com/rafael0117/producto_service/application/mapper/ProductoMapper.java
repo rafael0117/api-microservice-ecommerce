@@ -8,6 +8,6 @@ import com.rafael0117.producto_service.web.dto.producto.ProductoRequestDto;
 import com.rafael0117.producto_service.web.dto.producto.ProductoResponseDto;
 
 public interface ProductoMapper {
-    Producto toDomain(ProductoRequestDto productoRequestDto, Categoria categoria);
+    Producto toDomain(ProductoRequestDto productoRequestDto);
     ProductoResponseDto toDto(Producto producto);
 }

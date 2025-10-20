@@ -9,4 +9,5 @@ import java.util.List;
 public interface CategoriaService {
     List<CategoriaResponseDto> listar();
     CategoriaResponseDto guardar(CategoriaRequestDto categoriaRequestDto);
+    CategoriaResponseDto actualizar(Long id, CategoriaRequestDto categoriaRequestDto);
 }

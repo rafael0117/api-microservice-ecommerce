@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
-@Table(name = "categorias")
+@Table(name = "categoria")
 @Getter
 @Setter
 @AllArgsConstructor
@@ -16,5 +16,7 @@ public class Categoria {
     private Long id;
 
     private String nombre;
+
+    private Boolean estado = true;
 
 }

@@ -5,20 +5,15 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import lombok.*;
 
+import java.util.List;
+
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
 public class ProductoResponseDto {
-    private Long id;
-    private String nombre;
-    private String descripcion;
-    private Double precio;
-    private Integer stock;
-    private String talla;
-    private String color;
-    private String imagen;
-    private Long categoriaId;
-    private String categoriaNombre;
+    private Long id; private String nombre; private String descripcion;
+    private Double precio; private Integer stock; private String talla; private String color;
+    private Long categoriaId; private List<String> imagenesUrl;
 }
