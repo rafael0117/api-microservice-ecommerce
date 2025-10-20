@@ -5,8 +5,29 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="14df6a6c-9300-48a5-a93f-30265e99527f" name="Changes" comment="CAMBIO ANFOSE">
+      <change afterPath="$PROJECT_DIR$/.idea/dbnavigator.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/producto-service/uploads/c1.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/5fcbffcd-0f92-4c20-b164-e32f23da741a.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/768e186e-08fa-4958-8257-39bae7783e3a.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/93466e1f-e8a6-4b0f-a601-e7804d47a103.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/cdea7d3d-4308-4d02-8009-10b317ac1f2d.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/d49ac175-70ff-425b-9db2-5eb207af3a79.webp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pedido-service/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/pedido-service/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/producto-service/src/main/java/com/rafael0117/producto_service/application/mapper/Impl/ProductoMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/producto-service/src/main/java/com/rafael0117/producto_service/application/mapper/Impl/ProductoMapperImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/producto-service/src/main/java/com/rafael0117/producto_service/application/service/ImageStorage.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/producto-service/src/main/java/com/rafael0117/producto_service/application/service/Impl/ProductoServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/producto-service/src/main/java/com/rafael0117/producto_service/application/service/Impl/ProductoServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/producto-service/src/main/java/com/rafael0117/producto_service/application/service/ProductoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/producto-service/src/main/java/com/rafael0117/producto_service/application/service/ProductoService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/producto-service/src/main/java/com/rafael0117/producto_service/config/StaticResourceConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/producto-service/src/main/java/com/rafael0117/producto_service/domain/model/ProductoImagen.java" beforeDir="false" afterPath="$PROJECT_DIR$/producto-service/src/main/java/com/rafael0117/producto_service/domain/model/ProductoImagen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/producto-service/src/main/java/com/rafael0117/producto_service/web/controller/ProductoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/producto-service/src/main/java/com/rafael0117/producto_service/web/controller/ProductoController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/producto-service/src/main/java/com/rafael0117/producto_service/web/dto/producto/ProductoRequestDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/producto-service/src/main/java/com/rafael0117/producto_service/web/dto/producto/ProductoRequestDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/producto-service/src/main/java/com/rafael0117/producto_service/web/dto/producto/ProductoResponseDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/producto-service/src/main/java/com/rafael0117/producto_service/web/dto/producto/ProductoResponseDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/producto-service/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/producto-service/src/main/resources/application.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,14 +46,16 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory">{
-  &quot;lastFilter&quot;: {
-    &quot;state&quot;: &quot;OPEN&quot;,
-    &quot;assignee&quot;: &quot;rafael0117&quot;
-  }
-}</component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {}
+}]]></component>
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/rafael0117/api-microservice-ecommerce&quot;,
@@ -46,39 +69,39 @@
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.AuthServiceApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Application.CarritoServiceApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Application.EurekaServerApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Application.PedidoServiceApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Application.ProductoServiceApplication.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.All in auth-service (1).executor&quot;: &quot;Debug&quot;,
-    &quot;JUnit.All in auth-service.executor&quot;: &quot;Run&quot;,
-    &quot;Maven.auth-service [clean].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.auth-service [install].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.auth-service [validate].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.eureka-server [clean].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.eureka-server [install].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.producto-service [clean].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.producto-service [install].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.producto-service [test].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.producto-service [verify].executor&quot;: &quot;Run&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;F:/Cibertec/DAWII_CICLO_6/Proyecto_DAWII/auth-service/src/main/java/com/rafael0117/auth_service/config&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;vcs.Git&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.AuthServiceApplication.executor": "Run",
+    "Application.CarritoServiceApplication.executor": "Run",
+    "Application.EurekaServerApplication.executor": "Run",
+    "Application.PedidoServiceApplication.executor": "Run",
+    "Application.ProductoServiceApplication.executor": "Run",
+    "JUnit.All in auth-service (1).executor": "Debug",
+    "JUnit.All in auth-service.executor": "Run",
+    "Maven.auth-service [clean].executor": "Run",
+    "Maven.auth-service [install].executor": "Run",
+    "Maven.auth-service [validate].executor": "Run",
+    "Maven.eureka-server [clean].executor": "Run",
+    "Maven.eureka-server [install].executor": "Run",
+    "Maven.producto-service [clean].executor": "Run",
+    "Maven.producto-service [install].executor": "Run",
+    "Maven.producto-service [test].executor": "Run",
+    "Maven.producto-service [verify].executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "anfose-branch",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "F:/Cibertec/DAWII_CICLO_6/Proyecto_DAWII/auth-service/src/main/java/com/rafael0117/auth_service/config",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "vcs.Git"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="F:\Cibertec\DAWII_CICLO_6\Proyecto_DAWII\auth-service\src\main\java\com\rafael0117\auth_service\config" />
@@ -258,7 +281,15 @@
       <option name="project" value="LOCAL" />
       <updated>1760925294194</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="CAMBIO ANFOSE">
+      <option name="closed" value="true" />
+      <created>1760925902343</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1760925902343</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TerminalProjectNonSharedOptionsProvider">

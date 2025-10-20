@@ -13,7 +13,15 @@ import java.util.List;
 @AllArgsConstructor
 @Builder
 public class ProductoResponseDto {
-    private Long id; private String nombre; private String descripcion;
-    private Double precio; private Integer stock; private String talla; private String color;
-    private Long categoriaId; private List<String> imagenesUrl;
+    private Long id;
+    private String nombre;
+    private String descripcion;
+    private Double precio;
+    private Integer stock;
+    private String talla;
+    private String color;
+    private Long categoriaId;
+
+    // NUEVO: devolver base64
+    private List<String> imagenesBase64;
 }

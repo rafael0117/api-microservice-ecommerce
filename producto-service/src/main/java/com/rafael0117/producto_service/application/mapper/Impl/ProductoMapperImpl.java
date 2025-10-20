@@ -18,10 +18,7 @@ public class ProductoMapperImpl implements ProductoMapper {
 
     @Override
     public Producto toDomain(ProductoRequestDto productoRequestDto) {
-        if (productoRequestDto == null) {
-            return null;
-        }
-
+        if (productoRequestDto == null) return null;
         return Producto.builder()
                 .nombre(productoRequestDto.getNombre())
                 .descripcion(productoRequestDto.getDescripcion())
@@ -34,25 +31,25 @@ public class ProductoMapperImpl implements ProductoMapper {
     }
 
     @Override
-    public ProductoResponseDto toDto(Producto producto) {
-        if (producto == null) return null;
+    public ProductoResponseDto toDto(Producto p) {
+        if (p == null) return null;
 
-        List<String> urls = producto.getImagenes() == null ? List.of()
-                : producto.getImagenes().stream()
-                .sorted(Comparator.comparingInt(ProductoImagen::getOrden))
-                .map(ProductoImagen::getUrl)
+        List<String> imgs = (p.getImagenes() == null) ? List.of()
+                : p.getImagenes().stream()
+                .sorted(Comparator.comparingInt(pi -> pi.getOrden() == null ? 0 : pi.getOrden()))
+                .map(ProductoImagen::getBase64)
                 .toList();
 
         return ProductoResponseDto.builder()
-                .id(producto.getId())
-                .nombre(producto.getNombre())
-                .descripcion(producto.getDescripcion())
-                .precio(producto.getPrecio())
-                .stock(producto.getStock())
-                .talla(producto.getTalla())
-                .color(producto.getColor())
-                .categoriaId(producto.getCategoriaId())
-                .imagenesUrl(urls) // 👈 múltiples imágenes
+                .id(p.getId())
+                .nombre(p.getNombre())
+                .descripcion(p.getDescripcion())
+                .precio(p.getPrecio())
+                .stock(p.getStock())
+                .talla(p.getTalla())
+                .color(p.getColor())
+                .categoriaId(p.getCategoriaId())
+                .imagenesBase64(imgs)
                 .build();
     }
 

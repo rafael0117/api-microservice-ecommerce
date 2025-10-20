@@ -6,6 +6,8 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import lombok.*;
 
+import java.util.List;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -19,5 +21,7 @@ public class ProductoRequestDto {
     private String talla;
     private String color;
     private Long categoriaId;
-    private String imagen;
+
+    // NUEVO: lista de imágenes en base64
+    private List<String> imagenesBase64;
 }

@@ -33,29 +33,18 @@ public class ProductoController {
 
 
 
-    @PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-    public ResponseEntity<ProductoResponseDto> crear(
-            @RequestPart("producto") String productoJson,
-            @RequestPart(value = "imagenes", required = false) MultipartFile[] imagenes
-    ) throws Exception {
 
-        ProductoRequestDto dto = new ObjectMapper().readValue(productoJson, ProductoRequestDto.class);
-        List<MultipartFile> files =
-                (imagenes != null ? Arrays.asList(imagenes) : Collections.emptyList());
-
-        log.info("Producto: {}", dto);
-        log.info("Cantidad de imágenes recibidas: {}", files.size());
-
-        return ResponseEntity.status(HttpStatus.CREATED)
-                .body(productoService.guardar(dto, files));
+    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<ProductoResponseDto> crear(@RequestBody ProductoRequestDto dto) {
+        ProductoResponseDto respuesta = productoService.guardar(dto);
+        return ResponseEntity.status(HttpStatus.CREATED).body(respuesta);
     }
-
-
 
     @GetMapping("/{id}")
     public ResponseEntity<ProductoResponseDto> buscarPorId(@PathVariable Long id){
         return ResponseEntity.ok(productoService.buscarPorId(id));
     }
+
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> eliminar(@PathVariable Long id) {
         productoService.eliminar(id); // Llama al método del service

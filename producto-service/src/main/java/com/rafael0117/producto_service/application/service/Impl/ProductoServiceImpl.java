@@ -2,7 +2,6 @@ package com.rafael0117.producto_service.application.service.Impl;
 
 
 import com.rafael0117.producto_service.application.mapper.ProductoMapper;
-import com.rafael0117.producto_service.application.service.ImageStorage;
 import com.rafael0117.producto_service.application.service.ProductoService;
 
 import com.rafael0117.producto_service.domain.model.Producto;
@@ -26,7 +25,7 @@ public class ProductoServiceImpl implements ProductoService {
     private final ProductoRepository productoRepository;
     private final ProductoMapper productoMapper;
     private final ProductoImagenRepository imagenRepository;
-    private final ImageStorage storage;
+
 
     private String baseUrl() { return "/uploads/"; }
 
@@ -37,42 +36,44 @@ public class ProductoServiceImpl implements ProductoService {
     }
 
     @Override
-    public ProductoResponseDto guardar(ProductoRequestDto dto, List<MultipartFile> imagenes) {
-        Producto p = productoMapper.toDomain(dto);
-        p = productoRepository.save(p);
+    public ProductoResponseDto guardar(ProductoRequestDto dto) {
+        // 1) mapear y guardar el producto
+        Producto producto = productoMapper.toDomain(dto);
 
-        if (imagenes != null && !imagenes.isEmpty()) {
+        // 2) agregar imágenes base64 al entity
+        if (dto.getImagenesBase64() != null && !dto.getImagenesBase64().isEmpty()) {
             int i = 0;
-            List<ProductoImagen> imgs = new ArrayList<>();
-            for (MultipartFile f : imagenes) {
-                String name = storage.save(f);
-                imgs.add(ProductoImagen.builder()
-                        .nombreArchivo(name)
-                        .url("/uploads/" + name)
+            for (String b64 : dto.getImagenesBase64()) {
+                if (b64 == null || b64.isBlank()) continue;
+                ProductoImagen img = ProductoImagen.builder()
+                        .base64(b64.trim())
                         .orden(i++)
-                        .producto(p)
-                        .build());
+                        .producto(producto)
+                        .build();
+                producto.getImagenes().add(img);
             }
-            p.getImagenes().addAll(imgs);
-            imagenRepository.saveAll(imgs);
         }
 
-        return productoMapper.toDto(p);
+        // 3) guardar (cascade ALL en Producto -> ProductoImagen lo persiste todo)
+        producto = productoRepository.save(producto);
+
+        return productoMapper.toDto(producto);
     }
 
     @Override
     public ProductoResponseDto buscarPorId(Long id) {
-        return productoRepository.findById(id).map(productoMapper::toDto)
-                .orElseThrow(()->new RuntimeException("No se encontro el Id"));
+        Producto p = productoRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("No se encontró el Id " + id));
+        return productoMapper.toDto(p);
     }
+
 
     @Override
     public void eliminar(Long id) {
-        if (productoRepository.existsById(id)) {
-            productoRepository.deleteById(id);
-        } else {
+        if (!productoRepository.existsById(id)) {
             throw new EntityNotFoundException("Producto no encontrado con id: " + id);
         }
+        productoRepository.deleteById(id); // por orphanRemoval=true se borran imágenes asociadas
     }
 
 }
