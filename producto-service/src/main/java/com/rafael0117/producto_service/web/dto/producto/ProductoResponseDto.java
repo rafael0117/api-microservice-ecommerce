@@ -18,10 +18,9 @@ public class ProductoResponseDto {
     private String descripcion;
     private Double precio;
     private Integer stock;
-    private String talla;
-    private String color;
+    private List<String> talla;
+    private List<String> color;
     private Long categoriaId;
-
-    // NUEVO: devolver base64
-    private List<String> imagenesBase64;
+    private String categoriaNombre;  // para UI
+    private List<String> imagenesBase64; // urls (o base64 si prefieres)
 }

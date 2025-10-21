@@ -9,24 +9,27 @@ import com.rafael0117.producto_service.web.dto.producto.ProductoRequestDto;
 import com.rafael0117.producto_service.web.dto.producto.ProductoResponseDto;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Optional;
 
 @Component
 public class ProductoMapperImpl implements ProductoMapper {
 
 
     @Override
-    public Producto toDomain(ProductoRequestDto productoRequestDto) {
-        if (productoRequestDto == null) return null;
+    public Producto toDomain(ProductoRequestDto d) {
+        if (d == null) return null;
+
         return Producto.builder()
-                .nombre(productoRequestDto.getNombre())
-                .descripcion(productoRequestDto.getDescripcion())
-                .precio(productoRequestDto.getPrecio())
-                .stock(productoRequestDto.getStock())
-                .talla(productoRequestDto.getTalla())
-                .color(productoRequestDto.getColor())
-                .categoriaId(productoRequestDto.getCategoriaId())
+                .nombre(d.getNombre())
+                .descripcion(d.getDescripcion())
+                .precio(d.getPrecio())
+                .stock(d.getStock())
+                .tallas(new ArrayList<>(Optional.ofNullable(d.getTalla()).orElse(List.of())))
+                .colores(new ArrayList<>(Optional.ofNullable(d.getColor()).orElse(List.of())))
+                .categoriaId(d.getCategoriaId())
                 .build();
     }
 
@@ -34,8 +37,9 @@ public class ProductoMapperImpl implements ProductoMapper {
     public ProductoResponseDto toDto(Producto p) {
         if (p == null) return null;
 
-        List<String> imgs = (p.getImagenes() == null) ? List.of()
-                : p.getImagenes().stream()
+        // Ordena por 'orden' (null -> 0) y devuelve el base64 tal como lo usabas
+        List<String> imgs = (p.getImagenesBase64() == null) ? List.of()
+                : p.getImagenesBase64().stream()
                 .sorted(Comparator.comparingInt(pi -> pi.getOrden() == null ? 0 : pi.getOrden()))
                 .map(ProductoImagen::getBase64)
                 .toList();
@@ -46,10 +50,12 @@ public class ProductoMapperImpl implements ProductoMapper {
                 .descripcion(p.getDescripcion())
                 .precio(p.getPrecio())
                 .stock(p.getStock())
-                .talla(p.getTalla())
-                .color(p.getColor())
+                // 👇 único ajuste por el cambio a listas en la entidad
+                .talla(p.getTallas())     // antes p.getTalla()
+                .color(p.getColores())    // antes p.getColor()
                 .categoriaId(p.getCategoriaId())
-                .imagenesBase64(imgs)
+                .categoriaNombre(p.getCategoria() != null ? p.getCategoria().getNombre() : null)
+                .imagenesBase64(imgs)     // se mantiene igual
                 .build();
     }
 

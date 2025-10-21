@@ -18,10 +18,8 @@ public class ProductoRequestDto {
     private String descripcion;
     private Double precio;
     private Integer stock;
-    private String talla;
-    private String color;
+    private List<String> talla;            // listas
+    private List<String> color;            // listas
     private Long categoriaId;
-
-    // NUEVO: lista de imágenes en base64
-    private List<String> imagenesBase64;
+    private List<String> imagenesBase64;   // opcional (si envías base64)
 }

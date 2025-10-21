@@ -30,8 +30,11 @@ public class ProductoController {
         return ResponseEntity.ok(productoService.listar());
     }
 
-
-
+    @PutMapping(value = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<ProductoResponseDto> actualizar(@PathVariable Long id,
+                                                          @RequestBody ProductoRequestDto dto) {
+        return ResponseEntity.ok(productoService.actualizar(id, dto));
+    }
 
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
