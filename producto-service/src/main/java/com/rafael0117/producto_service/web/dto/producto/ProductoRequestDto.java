@@ -5,8 +5,9 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import lombok.*;
-
 import java.math.BigDecimal;
+import java.util.List;
+
 
 @Getter
 @Setter
@@ -19,8 +20,8 @@ public class ProductoRequestDto {
     private BigDecimal precio;
     private Integer stock;
     private Integer reservado;
-    private String talla;
-    private String color;
+    private List<String> talla;            // listas
+    private List<String> color;            // listas
     private Long categoriaId;
-    private String imagen;
+    private List<String> imagenesBase64;   // opcional (si envías base64)
 }

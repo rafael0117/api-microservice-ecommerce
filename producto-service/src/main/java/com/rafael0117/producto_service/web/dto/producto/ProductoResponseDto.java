@@ -17,9 +17,16 @@ import java.util.List;
 @AllArgsConstructor
 @Builder
 public class ProductoResponseDto {
-    private Long id; private String nombre; private String descripcion;
-    private BigDecimal precio;private Integer reservado;
-    private Integer stock; private String talla; private String color;
-    private Long categoriaId; private List<String> imagenesUrl;
 
+    private Long id;
+    private String nombre;
+    private String descripcion;
+    private BigDecimal precio;
+    private Integer stock;
+    private List<String> talla;
+    private List<String> color;
+    private Long categoriaId;
+    private String categoriaNombre;  // para UI
+    private List<String> imagenesBase64; // urls (o base64 si prefieres)
 }
+

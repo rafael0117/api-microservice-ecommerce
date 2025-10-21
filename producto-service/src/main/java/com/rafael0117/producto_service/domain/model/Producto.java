@@ -26,14 +26,29 @@ public class Producto {
     private BigDecimal precio;
     private Integer stock;
     private Integer reservado;
-    private String talla;
-    private String color;
 
+    @ElementCollection
+    @CollectionTable(name = "producto_talla", joinColumns = @JoinColumn(name = "producto_id"))
+    @Column(name = "valor")
+    private List<String> tallas = new ArrayList<>();
+
+    @ElementCollection
+    @CollectionTable(name = "producto_color", joinColumns = @JoinColumn(name = "producto_id"))
+    @Column(name = "valor")
+    private List<String> colores = new ArrayList<>();
+
+    // ===== Categoría (FK directa + relación de solo lectura) =====
+    @Column(name = "categoria_id", nullable = false)
     private Long categoriaId;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "categoria_id", insertable = false, updatable = false)
+    private Categoria categoria;
+
 
     @Builder.Default
     @OneToMany(mappedBy="producto", cascade=CascadeType.ALL, orphanRemoval=true, fetch=FetchType.LAZY)
-    private List<ProductoImagen> imagenes = new ArrayList<>();
+    private List<ProductoImagen> imagenesBase64 = new ArrayList<>();
 
 
 }
