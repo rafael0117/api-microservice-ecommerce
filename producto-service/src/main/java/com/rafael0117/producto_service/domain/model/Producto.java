@@ -46,5 +46,5 @@ public class Producto {
     @OneToMany(mappedBy="producto", cascade=CascadeType.ALL, orphanRemoval=true, fetch=FetchType.LAZY)
     private List<ProductoImagen> imagenesBase64 = new ArrayList<>();
 
-
+    private Integer reservado;
 }
