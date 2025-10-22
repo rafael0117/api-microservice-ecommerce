@@ -14,11 +14,19 @@ import lombok.NoArgsConstructor;
 @Builder
 public class ProductoImagen {
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY) private Long id;
-    private String nombreArchivo;           // uuid.ext
-    private String url;                     // /uploads/uuid.ext o /media/uuid.ext
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    // Guarda la cadena base64 (si quieres con prefijo data:...;base64,)
+    @Lob
+    @Column(columnDefinition = "LONGTEXT", nullable = false)
+    private String base64;
+
     private Integer orden;
 
-    @ManyToOne(fetch=FetchType.LAZY) @JoinColumn(name="producto_id")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "producto_id")
     private Producto producto;
 }

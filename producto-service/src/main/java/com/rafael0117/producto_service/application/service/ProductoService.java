@@ -9,7 +9,8 @@ import java.util.List;
 
 public interface ProductoService {
     List<ProductoResponseDto> listar();
-    ProductoResponseDto guardar(ProductoRequestDto productoRequestDto,  List<MultipartFile> imagenes);
+    ProductoResponseDto guardar(ProductoRequestDto productoRequestDto);
+    public ProductoResponseDto actualizar(Long id, ProductoRequestDto dto);
     ProductoResponseDto buscarPorId(Long id);
     void eliminar(Long id);
     void reservar(Long id, int cantidad);
