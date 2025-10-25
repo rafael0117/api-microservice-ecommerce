@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.math.BigDecimal;
+
 @Entity
 @Getter
 @Setter
@@ -18,7 +20,7 @@ public class DetalleCarrito {
 
     private Long idProducto;
     private String nombreProducto;
-    private Double precio;
+    private BigDecimal precio;
     private Integer cantidad;
     private String talla;
     private String color;

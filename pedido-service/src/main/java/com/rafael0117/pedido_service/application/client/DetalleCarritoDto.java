@@ -3,6 +3,7 @@ package com.rafael0117.pedido_service.application.client;
 import lombok.*;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 @Getter
 @Setter
@@ -15,6 +16,6 @@ public class DetalleCarritoDto {
     private String nombreProducto; // puede venir vacío y lo recalculamos desde producto
     private BigDecimal precio;     // idem
     private Integer cantidad;
-    private String talla;
-    private String color;
+    private List<String> talla;
+    private List<String> color;
 }

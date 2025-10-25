@@ -2,6 +2,9 @@ package com.rafael0117.carrito_service.application.client;
 
 import lombok.*;
 
+import java.math.BigDecimal;
+import java.util.List;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -11,10 +14,11 @@ public class ProductoResponseDto {
     private Long id;
     private String nombre;
     private String descripcion;
-    private Double precio;
+    private BigDecimal precio;
     private Integer stock;
-    private String talla;
-    private String color;
-    private String imagen;
-    private String categoriaNombre;
+    private List<String> talla;
+    private List<String> color;
+    private Long categoriaId;
+    private String categoriaNombre;  // para UI
+    private List<String> imagenesBase64;
 }

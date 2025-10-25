@@ -18,7 +18,6 @@ import java.util.Collections;
 import java.util.List;
 
 @Slf4j
-@CrossOrigin(origins = "http://localhost:62958")
 @RestController
 @RequestMapping("/api/productos")
 @RequiredArgsConstructor

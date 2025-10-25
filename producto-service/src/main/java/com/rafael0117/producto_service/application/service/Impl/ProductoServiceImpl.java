@@ -23,6 +23,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,11 +37,7 @@ public class ProductoServiceImpl implements ProductoService {
     private final ProductoRepository productoRepository;
     private final CategoriaRepository categoriaRepository;
     private final ProductoMapper productoMapper;
-
-    private final CategoriaRepository categoriaRepository;
-
     private final ProductoImagenRepository imagenRepository;
-
 
     private String baseUrl() { return "/uploads/"; }
 
@@ -91,7 +88,7 @@ public class ProductoServiceImpl implements ProductoService {
         // validaciones básicas (opcional)
         if (dto.getNombre() == null || dto.getNombre().isBlank())
             throw new IllegalArgumentException("Nombre requerido");
-        if (dto.getPrecio() == null || dto.getPrecio() < 0)
+        if (dto.getPrecio() == null || dto.getPrecio().compareTo(BigDecimal.ZERO) < 0)
             throw new IllegalArgumentException("Precio inválido");
         if (dto.getStock() == null || dto.getStock() < 0)
             throw new IllegalArgumentException("Stock inválido");

@@ -22,8 +22,6 @@ public class PedidoResponseDto {
 
     private BigDecimal subtotal;
     private BigDecimal impuesto;
-    private BigDecimal envio;
-    private BigDecimal descuento;
     private BigDecimal total;
 
     private String direccionEnvio;

@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 @Entity @Table(name = "pedido_detalles")
 @Getter @Setter @NoArgsConstructor @AllArgsConstructor @Builder
@@ -16,8 +17,8 @@ public class PedidoDetalle {
 
     @Column(precision = 18, scale = 2) private BigDecimal precioUnitario;
     private Integer cantidad;
-    private String talla;
-    private String color;
+    private List<String> talla;
+    private List<String> color;
 
     @Column(precision = 18, scale = 2) private BigDecimal totalLinea;
 

@@ -7,7 +7,6 @@ import com.rafael0117.pedido_service.domain.model.EstadoPedido;
 import com.rafael0117.pedido_service.domain.model.PedidoDetalle;
 import com.rafael0117.pedido_service.domain.model.Pedido;
 import com.rafael0117.pedido_service.domain.repository.PedidoRepository;
-import com.rafael0117.pedido_service.web.dto.detallePedido.DetallePedidoRequestDto;
 import com.rafael0117.pedido_service.web.dto.pedido.PedidoRequestDto;
 import com.rafael0117.pedido_service.web.dto.pedido.PedidoResponseDto;
 import jakarta.transaction.Transactional;
