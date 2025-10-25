@@ -1,4 +1,6 @@
 spring:
+  main:
+    web-application-type: reactive  # <- asegura que quede vivo en modo WebFlux
   application:
     name: api-gateway
   cloud:

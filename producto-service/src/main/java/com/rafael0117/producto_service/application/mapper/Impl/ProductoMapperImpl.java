@@ -23,6 +23,8 @@ public class ProductoMapperImpl implements ProductoMapper {
         if (d == null) return null;
 
         return Producto.builder()
+
+
                 .nombre(d.getNombre())
                 .descripcion(d.getDescripcion())
                 .precio(d.getPrecio())
@@ -30,6 +32,7 @@ public class ProductoMapperImpl implements ProductoMapper {
                 .tallas(new ArrayList<>(Optional.ofNullable(d.getTalla()).orElse(List.of())))
                 .colores(new ArrayList<>(Optional.ofNullable(d.getColor()).orElse(List.of())))
                 .categoriaId(d.getCategoriaId())
+
                 .build();
     }
 
@@ -45,6 +48,8 @@ public class ProductoMapperImpl implements ProductoMapper {
                 .toList();
 
         return ProductoResponseDto.builder()
+
+
                 .id(p.getId())
                 .nombre(p.getNombre())
                 .descripcion(p.getDescripcion())
@@ -56,6 +61,7 @@ public class ProductoMapperImpl implements ProductoMapper {
                 .categoriaId(p.getCategoriaId())
                 .categoriaNombre(p.getCategoria() != null ? p.getCategoria().getNombre() : null)
                 .imagenesBase64(imgs)     // se mantiene igual
+
                 .build();
     }
 

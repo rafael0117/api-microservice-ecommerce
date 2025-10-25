@@ -15,9 +15,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/pedidos")
 @RequiredArgsConstructor
 public class PedidoController {
+
     private final PedidoService pedidoService;
+
     @PostMapping
-    public ResponseEntity<PedidoResponseDto> crearPedido(@RequestBody PedidoRequestDto request){
-        return ResponseEntity.status(HttpStatus.CREATED).body(pedidoService.crearPedido(request));
+    public PedidoResponseDto crearDesdeCarrito(@RequestBody PedidoRequestDto request) {
+        return pedidoService.crearDesdeCarrito(request);
     }
 }

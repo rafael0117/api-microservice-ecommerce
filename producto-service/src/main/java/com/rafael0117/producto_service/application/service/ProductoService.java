@@ -13,4 +13,7 @@ public interface ProductoService {
     public ProductoResponseDto actualizar(Long id, ProductoRequestDto dto);
     ProductoResponseDto buscarPorId(Long id);
     void eliminar(Long id);
+    void reservar(Long id, int cantidad);
+    void descontar(Long id, int cantidad);
+    void liberar(Long id, int cantidad);
 }
