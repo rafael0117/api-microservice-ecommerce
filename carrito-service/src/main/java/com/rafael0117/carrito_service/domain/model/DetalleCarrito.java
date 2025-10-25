@@ -5,12 +5,15 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
-@Entity
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 @Getter
 @Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Entity
 @Table(name = "detalle_carrito")
 public class DetalleCarrito {
 
@@ -20,13 +23,33 @@ public class DetalleCarrito {
 
     private Long idProducto;
     private String nombreProducto;
-    private BigDecimal precio;
-    private Integer cantidad;
-    private String talla;
-    private String color;
+    private String descripcion;
 
-    @ManyToOne
+    @Column(precision = 18, scale = 2)
+    private BigDecimal precio;
+
+    private Integer cantidad;
+
+    @ElementCollection
+    @CollectionTable(name = "detalle_tallas", joinColumns = @JoinColumn(name = "detalle_id"))
+    @Column(name = "talla")
+    private List<String> tallas = new ArrayList<>();
+
+    @ElementCollection
+    @CollectionTable(name = "detalle_colores", joinColumns = @JoinColumn(name = "detalle_id"))
+    @Column(name = "color")
+    private List<String> colores = new ArrayList<>();
+
+    @ElementCollection
+    @CollectionTable(name = "detalle_imagenes", joinColumns = @JoinColumn(name = "detalle_id"))
+    @Column(name = "imagen_base64", columnDefinition = "LONGTEXT")
+    private List<String> imagenesBase64 = new ArrayList<>();
+
+    private Long categoriaId;
+    private String categoriaNombre;
+
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_carrito")
-    @JsonBackReference(value = "carrito-detalle")
+    @JsonBackReference("carrito-detalle")
     private Carrito carrito;
 }

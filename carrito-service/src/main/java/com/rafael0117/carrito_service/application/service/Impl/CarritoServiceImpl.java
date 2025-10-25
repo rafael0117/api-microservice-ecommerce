@@ -2,20 +2,17 @@ package com.rafael0117.carrito_service.application.service.Impl;
 
 import com.rafael0117.carrito_service.application.client.ProductoClient;
 import com.rafael0117.carrito_service.application.client.ProductoResponseDto;
-
 import com.rafael0117.carrito_service.application.service.CarritoService;
 import com.rafael0117.carrito_service.domain.model.Carrito;
 import com.rafael0117.carrito_service.domain.model.DetalleCarrito;
 import com.rafael0117.carrito_service.domain.repository.CarritoRepository;
 import com.rafael0117.carrito_service.domain.repository.DetalleCarritoRepository;
-
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.Optional;
-
 
 @Service
 @RequiredArgsConstructor
@@ -38,6 +35,7 @@ public class CarritoServiceImpl implements CarritoService {
     @Transactional
     public Carrito agregarProducto(Long idUsuario, DetalleCarrito detalleEntrada) {
         Carrito carrito = obtenerCarrito(idUsuario);
+
         if (carrito.getDetalles() == null) {
             carrito.setDetalles(new ArrayList<>());
         }
@@ -53,7 +51,7 @@ public class CarritoServiceImpl implements CarritoService {
             throw new RuntimeException("Stock insuficiente para el producto: " + producto.getNombre());
         }
 
-        // Verificar si ya existe el producto en el carrito
+        // Buscar si ya existe el producto en el carrito
         Optional<DetalleCarrito> existenteOpt = carrito.getDetalles().stream()
                 .filter(d -> d.getIdProducto().equals(detalleEntrada.getIdProducto()))
                 .findFirst();
@@ -63,12 +61,18 @@ public class CarritoServiceImpl implements CarritoService {
             existente.setCantidad(existente.getCantidad() + detalleEntrada.getCantidad());
             detalleRepository.save(existente);
         } else {
-            // Crear nuevo detalle
+            // Crear nuevo detalle con todos los datos del producto
             DetalleCarrito nuevo = new DetalleCarrito();
-            nuevo.setIdProducto(detalleEntrada.getIdProducto());
-            nuevo.setCantidad(detalleEntrada.getCantidad());
+            nuevo.setIdProducto(producto.getId());
             nuevo.setNombreProducto(producto.getNombre());
+            nuevo.setDescripcion(producto.getDescripcion());
             nuevo.setPrecio(producto.getPrecio());
+            nuevo.setCantidad(detalleEntrada.getCantidad());
+            nuevo.setTallas(producto.getTalla());
+            nuevo.setColores(producto.getColor());
+            nuevo.setImagenesBase64(producto.getImagenesBase64());
+            nuevo.setCategoriaId(producto.getCategoriaId());
+            nuevo.setCategoriaNombre(producto.getCategoriaNombre());
             nuevo.setCarrito(carrito);
 
             carrito.getDetalles().add(nuevo);
@@ -79,6 +83,7 @@ public class CarritoServiceImpl implements CarritoService {
         return carritoRepository.findById(carrito.getId())
                 .orElseThrow(() -> new RuntimeException("Error al actualizar el carrito"));
     }
+
 
     @Override
     @Transactional

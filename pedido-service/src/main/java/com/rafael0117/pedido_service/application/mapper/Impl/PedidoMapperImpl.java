@@ -4,30 +4,40 @@ import com.rafael0117.pedido_service.application.mapper.PedidoMapper;
 import com.rafael0117.pedido_service.domain.model.Pedido;
 import com.rafael0117.pedido_service.domain.model.PedidoDetalle;
 import com.rafael0117.pedido_service.web.dto.detallePedido.PedidoDetalleResponseDto;
-import com.rafael0117.pedido_service.web.dto.pedido.PedidoRequestDto;
 import com.rafael0117.pedido_service.web.dto.pedido.PedidoResponseDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
-import java.time.LocalDateTime;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+import java.time.temporal.ChronoUnit;
 
 
 @Component
-@RequiredArgsConstructor
 public class PedidoMapperImpl implements PedidoMapper {
+
+    private static BigDecimal d1(BigDecimal v) {
+        if (v == null) return null;
+        // fuerza 1 decimal exactamente, p.e. 0.0, 180.0, 32.4
+        return v.setScale(1, RoundingMode.HALF_UP);
+    }
+
     @Override
     public PedidoResponseDto toDto(Pedido p) {
         if (p == null) return null;
+
         return PedidoResponseDto.builder()
                 .id(p.getId())
                 .idUsuario(p.getIdUsuario())
-                .fechaCreacion(p.getFechaCreacion())
-                .estado(p.getEstado())
-                .subtotal(p.getSubtotal())
-                .impuesto(p.getImpuesto())
-                .total(p.getTotal())
+                .fechaCreacion(p.getFechaCreacion() != null ? p.getFechaCreacion().truncatedTo(ChronoUnit.SECONDS) : null)
+                .estado(p.getEstado() != null ? p.getEstado().name() : "CREATED")
+                .subtotal(d1(p.getSubtotal()))
+                .impuesto(d1(p.getImpuesto()))
+                .envio(d1(p.getEnvio()))
+                .descuento(d1(p.getDescuento()))
+                .total(d1(p.getTotal()))
                 .direccionEnvio(p.getDireccionEnvio())
-                .metodoPago(p.getMetodoPago())
+                .metodoPago(p.getMetodoPago() != null ? p.getMetodoPago().name() : null)
                 .detalles(p.getDetalles().stream().map(this::toDetalleDto).toList())
                 .build();
     }
@@ -39,11 +49,13 @@ public class PedidoMapperImpl implements PedidoMapper {
                 .id(d.getId())
                 .idProducto(d.getIdProducto())
                 .nombreProducto(d.getNombreProducto())
-                .precioUnitario(d.getPrecioUnitario())
+                .precioUnitario(d1(d.getPrecioUnitario()))
                 .cantidad(d.getCantidad())
-                .talla(d.getTalla())
-                .color(d.getColor())
-                .totalLinea(d.getTotalLinea())
+                .tallas(d.getTallas())     // ✅ aquí
+                .colores(d.getColores())   // ✅ aquí
+                .totalLinea(d1(d.getTotalLinea()))
                 .build();
     }
+
+
 }

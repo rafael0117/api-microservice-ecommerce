@@ -6,19 +6,17 @@ import java.util.List;
 
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 @Builder
 public class PedidoDetalleResponseDto {
-
     private Long id;
     private Long idProducto;
     private String nombreProducto;
-    private String descripcion;
     private BigDecimal precioUnitario;
-    private List<String> talla;
-    private List<String> color;
     private Integer cantidad;
-    private List<String> imagenesBase64;
+    private List<String> tallas;
+    private List<String> colores;
+    // ✅ lista
     private BigDecimal totalLinea;
 }
