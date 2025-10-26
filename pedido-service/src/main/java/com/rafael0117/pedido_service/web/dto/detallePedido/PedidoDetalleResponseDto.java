@@ -2,11 +2,12 @@ package com.rafael0117.pedido_service.web.dto.detallePedido;
 import lombok.*;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 @Builder
 public class PedidoDetalleResponseDto {
     private Long id;
@@ -14,7 +15,8 @@ public class PedidoDetalleResponseDto {
     private String nombreProducto;
     private BigDecimal precioUnitario;
     private Integer cantidad;
-    private String talla;
-    private String color;
+    private List<String> tallas;
+    private List<String> colores;
+    // ✅ lista
     private BigDecimal totalLinea;
 }

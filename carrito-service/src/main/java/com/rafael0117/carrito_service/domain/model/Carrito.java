@@ -8,7 +8,6 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-// Carrito.java
 @Entity
 @Data
 @NoArgsConstructor
@@ -16,19 +15,22 @@ import java.util.List;
 @Builder
 @Table(name = "carrito")
 public class Carrito {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private Long idUsuario;
     private LocalDateTime fechaCreacion;
+
     @OneToMany(mappedBy = "carrito", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonManagedReference(value = "carrito-detalle")
+    @JsonManagedReference("carrito-detalle")
     private List<DetalleCarrito> detalles = new ArrayList<>();
+
     @PrePersist
     public void prePersist() {
         if (fechaCreacion == null) {
             fechaCreacion = LocalDateTime.now();
         }
     }
-
-
 }
