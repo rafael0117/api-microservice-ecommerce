@@ -12,6 +12,8 @@ import org.springframework.stereotype.Component;
 @RequiredArgsConstructor
 public class ProductEventsProducer {
 
+
+
     private final KafkaTemplate<String, ProductChangedPayload> kafkaTemplate;
 
     @Value("${app.kafka.topics.product-changed:product-events}")

@@ -9,22 +9,39 @@
       <assistant-state connection-id="2c393f85-e259-4b01-94ab-e8e502aefa7f" default-profile-name="" selected-conversation-id="" assistant-type="GENERIC" availability="UNAVAILABLE" acknowledgement="NONE">
         <conversations />
       </assistant-state>
+      <assistant-state connection-id="962c84df-ad70-47d9-831b-0e417851c844" default-profile-name="" selected-conversation-id="" assistant-type="GENERIC" availability="UNAVAILABLE" acknowledgement="NONE">
+        <conversations />
+      </assistant-state>
       <assistant-state connection-id="virtual-mysql-connection" default-profile-name="" selected-conversation-id="" assistant-type="GENERIC" availability="UNAVAILABLE" acknowledgement="NONE">
         <conversations />
       </assistant-state>
     </assistants>
   </component>
+  <component name="DBNavigator.Project.DatabaseBrowserManager">
+    <autoscroll-to-editor value="false" />
+    <autoscroll-from-editor value="true" />
+    <show-object-properties value="true" />
+    <loaded-nodes />
+  </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
-    <connection id="2c393f85-e259-4b01-94ab-e8e502aefa7f">
-      <console name="Connection" type="STANDARD" schema="mysql" session="Main" />
+    <connection id="962c84df-ad70-47d9-831b-0e417851c844">
+      <console name="Connection" type="STANDARD" schema="mysql" session="Main"><![CDATA[create database if not exists db_carrito
+create database if not exists db_auth
+
+INSERT INTO db_auth.rol (id) VALUES ('ROLE_USER');
+INSERT INTO db_auth.rol (id) VALUES ('ROLE_ADMIN');]]></console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
     <open-files />
   </component>
+  <component name="DBNavigator.Project.ObjectQuickFilterManager">
+    <last-used-operator value="EQUAL" />
+    <filters />
+  </component>
   <component name="DBNavigator.Project.Settings">
     <connections>
-      <connection source-id="" id="2c393f85-e259-4b01-94ab-e8e502aefa7f" active="true" signed="true">
+      <connection source-id="" id="962c84df-ad70-47d9-831b-0e417851c844" active="true" signed="true">
         <database>
           <name value="Connection" />
           <description value="" />
@@ -34,15 +51,8 @@
           <driver-source value="BUNDLED" />
           <driver-library value="" />
           <driver value="" />
-          <url-type value="DATABASE" />
-          <host value="localhost" />
-          <port value="3306" />
-          <database value="mysql" />
-          <tns-folder value="" />
-          <tns-profile value="" />
-          <server-type value="" />
-          <protocol value="" />
-          <url-parameters />
+          <url-type value="CUSTOM" />
+          <url value="jdbc:mysql://localhost:3306/mysql" />
           <type value="USER_PASSWORD" />
           <user value="root" />
           <token-type value="" />

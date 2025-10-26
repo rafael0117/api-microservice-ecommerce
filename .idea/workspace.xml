@@ -4,19 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="14df6a6c-9300-48a5-a93f-30265e99527f" name="Changes" comment="update classes">
+    <list default="true" id="14df6a6c-9300-48a5-a93f-30265e99527f" name="Changes" comment="Merge branch 'master' of https://github.com/rafael0117/api-microservice-ecommerce into anfose-branch&#10;&#10;# Conflicts:&#10;#&#9;.idea/compiler.xml&#10;#&#9;.idea/dbnavigator.xml&#10;#&#9;.idea/workspace.xml&#10;#&#9;pedido-service/src/main/java/com/rafael0117/pedido_service/application/mapper/Impl/PedidoMapperImpl.java&#10;#&#9;producto-service/src/main/java/com/rafael0117/producto_service/application/service/Impl/ProductoServiceImpl.java&#10;#&#9;producto-service/src/main/java/com/rafael0117/producto_service/web/controller/ProductoController.java">
+      <change beforePath="$PROJECT_DIR$/.idea/dbnavigator.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dbnavigator.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/carrito-service/src/main/java/com/rafael0117/carrito_service/application/client/ProductoResponseDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/carrito-service/src/main/java/com/rafael0117/carrito_service/application/client/ProductoResponseDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/carrito-service/src/main/java/com/rafael0117/carrito_service/application/service/Impl/CarritoServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/carrito-service/src/main/java/com/rafael0117/carrito_service/application/service/Impl/CarritoServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/carrito-service/src/main/java/com/rafael0117/carrito_service/domain/model/Carrito.java" beforeDir="false" afterPath="$PROJECT_DIR$/carrito-service/src/main/java/com/rafael0117/carrito_service/domain/model/Carrito.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/carrito-service/src/main/java/com/rafael0117/carrito_service/domain/model/DetalleCarrito.java" beforeDir="false" afterPath="$PROJECT_DIR$/carrito-service/src/main/java/com/rafael0117/carrito_service/domain/model/DetalleCarrito.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pedido-service/src/main/java/com/rafael0117/pedido_service/application/client/DetalleCarritoDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/pedido-service/src/main/java/com/rafael0117/pedido_service/application/client/DetalleCarritoDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pedido-service/src/main/java/com/rafael0117/pedido_service/application/mapper/Impl/PedidoMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/pedido-service/src/main/java/com/rafael0117/pedido_service/application/mapper/Impl/PedidoMapperImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pedido-service/src/main/java/com/rafael0117/pedido_service/application/service/Impl/PedidoServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/pedido-service/src/main/java/com/rafael0117/pedido_service/application/service/Impl/PedidoServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pedido-service/src/main/java/com/rafael0117/pedido_service/domain/model/Pedido.java" beforeDir="false" afterPath="$PROJECT_DIR$/pedido-service/src/main/java/com/rafael0117/pedido_service/domain/model/Pedido.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pedido-service/src/main/java/com/rafael0117/pedido_service/domain/model/PedidoDetalle.java" beforeDir="false" afterPath="$PROJECT_DIR$/pedido-service/src/main/java/com/rafael0117/pedido_service/domain/model/PedidoDetalle.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pedido-service/src/main/java/com/rafael0117/pedido_service/web/dto/detallePedido/PedidoDetalleResponseDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/pedido-service/src/main/java/com/rafael0117/pedido_service/web/dto/detallePedido/PedidoDetalleResponseDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pedido-service/src/main/java/com/rafael0117/pedido_service/web/dto/pedido/PedidoResponseDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/pedido-service/src/main/java/com/rafael0117/pedido_service/web/dto/pedido/PedidoResponseDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/producto-service/src/main/java/com/rafael0117/producto_service/kafka/ProductEventsProducer.java" beforeDir="false" afterPath="$PROJECT_DIR$/producto-service/src/main/java/com/rafael0117/producto_service/kafka/ProductEventsProducer.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,7 +70,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "master",
+    "git-widget-placeholder": "anfose-branch",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "F:/Cibertec/DAWII_CICLO_6/Proyecto_DAWII/auth-service/src/main/java/com/rafael0117/auth_service/config",
