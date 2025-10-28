@@ -28,8 +28,7 @@ public class PedidoServiceImpl implements PedidoService {
 
     @Override
     @Transactional
-    public PedidoResponseDto crearDesdeCarrito(PedidoRequestDto request) {
-        Long idUsuario = request.getIdUsuario();
+    public PedidoResponseDto crearDesdeCarrito(Long idUsuario, PedidoRequestDto request) {
         if (idUsuario == null) throw new IllegalArgumentException("idUsuario es requerido");
 
         // 1) Obtener carrito
@@ -38,24 +37,24 @@ public class PedidoServiceImpl implements PedidoService {
             throw new IllegalStateException("El carrito está vacío.");
         }
 
-        // 2) Construir pedido base
+        // 2) Construir pedido
         Pedido pedido = Pedido.builder()
                 .idUsuario(idUsuario)
-                .estado(EstadoPedido.PENDING)              // ← requerido por el JSON de salida
+                .estado(EstadoPedido.PENDING)
                 .direccionEnvio(request.getDireccionEnvio())
                 .metodoPago(request.getMetodoPago())
                 .subtotal(BigDecimal.ZERO.setScale(2))
                 .impuesto(BigDecimal.ZERO.setScale(2))
-                .envio(new BigDecimal("0.00"))             // ← 0.00
-                .descuento(new BigDecimal("0.00"))         // ← 0.00
+                .envio(BigDecimal.ZERO.setScale(2))
+                .descuento(BigDecimal.ZERO.setScale(2))
                 .total(BigDecimal.ZERO.setScale(2))
                 .build();
 
         BigDecimal subtotal = BigDecimal.ZERO.setScale(2);
 
-        // 3) Detalles desde el carrito (copiando talla/color seleccionados)
         for (DetalleCarritoDto d : carrito.getDetalles()) {
-            BigDecimal precioUnitario = (d.getPrecio() != null ? d.getPrecio() : BigDecimal.ZERO).setScale(2, RoundingMode.HALF_UP);
+            BigDecimal precioUnitario = (d.getPrecio() != null ? d.getPrecio() : BigDecimal.ZERO)
+                    .setScale(2, RoundingMode.HALF_UP);
             BigDecimal totalLinea = precioUnitario
                     .multiply(BigDecimal.valueOf(d.getCantidad()))
                     .setScale(2, RoundingMode.HALF_UP);
@@ -72,33 +71,26 @@ public class PedidoServiceImpl implements PedidoService {
                     .totalLinea(totalLinea)
                     .build();
 
-
             pedido.getDetalles().add(det);
             subtotal = subtotal.add(totalLinea).setScale(2, RoundingMode.HALF_UP);
         }
 
-        // 4) Montos
         BigDecimal impuesto = subtotal.multiply(IGV).setScale(2, RoundingMode.HALF_UP);
-        BigDecimal envio = pedido.getEnvio();         // 0.00
-        BigDecimal descuento = pedido.getDescuento(); // 0.00
-        BigDecimal total = subtotal.add(impuesto).add(envio).subtract(descuento).setScale(2, RoundingMode.HALF_UP);
+        BigDecimal total = subtotal.add(impuesto).setScale(2, RoundingMode.HALF_UP);
 
         pedido.setSubtotal(subtotal);
         pedido.setImpuesto(impuesto);
         pedido.setTotal(total);
 
-        // 5) Persistir
         pedido = pedidoRepository.save(pedido);
 
-        // 6) Vaciar carrito (no cambiar estado aquí para mantener "CREATED" en la respuesta)
         try {
             carritoClient.vaciar(idUsuario);
         } catch (Exception e) {
-            // Loguea si quieres, pero no cambies el estado para que el JSON siga en CREATED
             // log.warn("No se pudo vaciar el carrito del usuario {}: {}", idUsuario, e.getMessage());
         }
 
-        // 7) Mapear a DTO (tu mapper ya se encarga de formateo adicional)
         return pedidoMapper.toDto(pedido);
     }
+
 }

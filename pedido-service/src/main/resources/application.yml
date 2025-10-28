@@ -28,6 +28,8 @@ app:
     base-url: http://localhost:8185
   producto:
     base-url: http://localhost:8181
+  auth:
+    base-url: http://localhost:9000
 logging:
   level:
     org.springframework.security: DEBUG
