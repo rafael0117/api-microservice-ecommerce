@@ -29,21 +29,10 @@ public class DetalleCarrito {
     private BigDecimal precio;
 
     private Integer cantidad;
+    private String talla;            // <-- selección
+    private String color;            // <-- selección
 
-    @ElementCollection
-    @CollectionTable(name = "detalle_tallas", joinColumns = @JoinColumn(name = "detalle_id"))
-    @Column(name = "talla")
-    private List<String> tallas = new ArrayList<>();
 
-    @ElementCollection
-    @CollectionTable(name = "detalle_colores", joinColumns = @JoinColumn(name = "detalle_id"))
-    @Column(name = "color")
-    private List<String> colores = new ArrayList<>();
-
-    @ElementCollection
-    @CollectionTable(name = "detalle_imagenes", joinColumns = @JoinColumn(name = "detalle_id"))
-    @Column(name = "imagen_base64", columnDefinition = "LONGTEXT")
-    private List<String> imagenesBase64 = new ArrayList<>();
 
     private Long categoriaId;
     private String categoriaNombre;
