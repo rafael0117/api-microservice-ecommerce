@@ -7,7 +7,6 @@ import com.rafael0117.pedido_service.domain.model.EstadoPedido;
 import com.rafael0117.pedido_service.domain.model.PedidoDetalle;
 import com.rafael0117.pedido_service.domain.model.Pedido;
 import com.rafael0117.pedido_service.domain.repository.PedidoRepository;
-import com.rafael0117.pedido_service.web.dto.detallePedido.DetallePedidoRequestDto;
 import com.rafael0117.pedido_service.web.dto.pedido.PedidoRequestDto;
 import com.rafael0117.pedido_service.web.dto.pedido.PedidoResponseDto;
 import jakarta.transaction.Transactional;
@@ -29,32 +28,33 @@ public class PedidoServiceImpl implements PedidoService {
 
     @Override
     @Transactional
-    public PedidoResponseDto crearDesdeCarrito(PedidoRequestDto request) {
-        Long idUsuario = request.getIdUsuario();
-        if (idUsuario == null)
-            throw new IllegalArgumentException("idUsuario es requerido");
+    public PedidoResponseDto crearDesdeCarrito(Long idUsuario, PedidoRequestDto request) {
+        if (idUsuario == null) throw new IllegalArgumentException("idUsuario es requerido");
 
-        // 🔹 Obtener el carrito completo del usuario
+        // 1) Obtener carrito
         CarritoDto carrito = carritoClient.obtenerCarritoPorId(idUsuario);
-        if (carrito == null || carrito.getDetalles() == null || carrito.getDetalles().isEmpty())
+        if (carrito == null || carrito.getDetalles() == null || carrito.getDetalles().isEmpty()) {
             throw new IllegalStateException("El carrito está vacío.");
+        }
 
-        // 🔹 Crear el pedido base
+        // 2) Construir pedido
         Pedido pedido = Pedido.builder()
                 .idUsuario(idUsuario)
                 .estado(EstadoPedido.PENDING)
                 .direccionEnvio(request.getDireccionEnvio())
                 .metodoPago(request.getMetodoPago())
-                .subtotal(BigDecimal.ZERO)
-                .impuesto(BigDecimal.ZERO)
-                .total(BigDecimal.ZERO)
+                .subtotal(BigDecimal.ZERO.setScale(2))
+                .impuesto(BigDecimal.ZERO.setScale(2))
+                .envio(BigDecimal.ZERO.setScale(2))
+                .descuento(BigDecimal.ZERO.setScale(2))
+                .total(BigDecimal.ZERO.setScale(2))
                 .build();
 
-        BigDecimal subtotal = BigDecimal.ZERO;
+        BigDecimal subtotal = BigDecimal.ZERO.setScale(2);
 
-        // 🔹 Convertir los productos del carrito en detalles del pedido
         for (DetalleCarritoDto d : carrito.getDetalles()) {
-            BigDecimal precioUnitario = d.getPrecio() != null ? d.getPrecio() : BigDecimal.ZERO;
+            BigDecimal precioUnitario = (d.getPrecio() != null ? d.getPrecio() : BigDecimal.ZERO)
+                    .setScale(2, RoundingMode.HALF_UP);
             BigDecimal totalLinea = precioUnitario
                     .multiply(BigDecimal.valueOf(d.getCantidad()))
                     .setScale(2, RoundingMode.HALF_UP);
@@ -63,18 +63,18 @@ public class PedidoServiceImpl implements PedidoService {
                     .pedido(pedido)
                     .idProducto(d.getIdProducto())
                     .nombreProducto(d.getNombreProducto())
+                    .descripcion(d.getDescripcion())
                     .precioUnitario(precioUnitario)
                     .cantidad(d.getCantidad())
-                    .talla(d.getTalla())
-                    .color(d.getColor())
+                    .tallas(d.getTallas())
+                    .colores(d.getColores())
                     .totalLinea(totalLinea)
                     .build();
 
             pedido.getDetalles().add(det);
-            subtotal = subtotal.add(totalLinea);
+            subtotal = subtotal.add(totalLinea).setScale(2, RoundingMode.HALF_UP);
         }
 
-        // 🔹 Calcular montos finales
         BigDecimal impuesto = subtotal.multiply(IGV).setScale(2, RoundingMode.HALF_UP);
         BigDecimal total = subtotal.add(impuesto).setScale(2, RoundingMode.HALF_UP);
 
@@ -82,21 +82,15 @@ public class PedidoServiceImpl implements PedidoService {
         pedido.setImpuesto(impuesto);
         pedido.setTotal(total);
 
-        // 🔹 Guardar pedido
         pedido = pedidoRepository.save(pedido);
 
         try {
-            // 🧹 Vaciar el carrito del usuario con el nuevo endpoint
             carritoClient.vaciar(idUsuario);
-
-            pedido.setEstado(EstadoPedido.CONFIRMED);
-            pedido = pedidoRepository.save(pedido);
-            return pedidoMapper.toDto(pedido);
-
         } catch (Exception e) {
-            pedido.setEstado(EstadoPedido.FAILED);
-            pedidoRepository.save(pedido);
-            throw new IllegalStateException("No se pudo confirmar el pedido: " + e.getMessage(), e);
+            // log.warn("No se pudo vaciar el carrito del usuario {}: {}", idUsuario, e.getMessage());
         }
+
+        return pedidoMapper.toDto(pedido);
     }
+
 }

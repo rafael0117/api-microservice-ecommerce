@@ -31,6 +31,7 @@ public class ProductoMapperImpl implements ProductoMapper {
                 .stock(d.getStock())
                 .tallas(new ArrayList<>(Optional.ofNullable(d.getTalla()).orElse(List.of())))
                 .colores(new ArrayList<>(Optional.ofNullable(d.getColor()).orElse(List.of())))
+                .categoriaSexo(d.getCategoriaSexo())
                 .categoriaId(d.getCategoriaId())
 
                 .build();
@@ -58,6 +59,7 @@ public class ProductoMapperImpl implements ProductoMapper {
                 // 👇 único ajuste por el cambio a listas en la entidad
                 .talla(p.getTallas())     // antes p.getTalla()
                 .color(p.getColores())    // antes p.getColor()
+                .categoriaSexo(p.getCategoriaSexo())
                 .categoriaId(p.getCategoriaId())
                 .categoriaNombre(p.getCategoria() != null ? p.getCategoria().getNombre() : null)
                 .imagenesBase64(imgs)     // se mantiene igual

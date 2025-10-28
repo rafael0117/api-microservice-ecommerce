@@ -7,8 +7,6 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="api-gateway" />
-        <module name="eureka-server" />
       </profile>
       <profile name="Annotation profile for producto-service" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
@@ -20,7 +18,7 @@
         </processorPath>
         <module name="producto-service" />
       </profile>
-      <profile name="Annotation profile for pedido-service" enabled="true">
+      <profile name="Annotation profile for carrito-service" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
@@ -33,7 +31,9 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="api-gateway" target="21" />
       <module name="auth-server" target="21" />
+      <module name="eureka-server" target="21" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">

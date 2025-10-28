@@ -1,6 +1,7 @@
 package com.rafael0117.producto_service.web.dto.producto;
 
 import com.rafael0117.producto_service.domain.model.Categoria;
+import com.rafael0117.producto_service.domain.model.CategoriaSexo;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import lombok.*;
@@ -23,6 +24,7 @@ public class ProductoResponseDto {
     private String descripcion;
     private BigDecimal precio;
     private Integer stock;
+    private CategoriaSexo categoriaSexo;
     private List<String> talla;
     private List<String> color;
     private Long categoriaId;

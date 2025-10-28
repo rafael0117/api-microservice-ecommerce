@@ -4,4 +4,5 @@ import com.rafael0117.pedido_service.web.dto.pedido.PedidoRequestDto;
 import com.rafael0117.pedido_service.web.dto.pedido.PedidoResponseDto;
 
 public interface PedidoService {
-    PedidoResponseDto crearDesdeCarrito(PedidoRequestDto request);}
+    PedidoResponseDto crearDesdeCarrito(Long idUsuario, PedidoRequestDto request);
+}

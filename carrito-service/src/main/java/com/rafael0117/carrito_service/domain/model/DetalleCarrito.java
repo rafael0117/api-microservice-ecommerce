@@ -4,11 +4,16 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.*;
 
-@Entity
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
+
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 @Getter
 @Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Entity
 @Table(name = "detalle_carrito")
 public class DetalleCarrito {
 
@@ -18,13 +23,22 @@ public class DetalleCarrito {
 
     private Long idProducto;
     private String nombreProducto;
-    private Double precio;
-    private Integer cantidad;
-    private String talla;
-    private String color;
+    private String descripcion;
 
-    @ManyToOne
+    @Column(precision = 18, scale = 2)
+    private BigDecimal precio;
+
+    private Integer cantidad;
+    private String talla;            // <-- selección
+    private String color;            // <-- selección
+
+
+
+    private Long categoriaId;
+    private String categoriaNombre;
+
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_carrito")
-    @JsonBackReference(value = "carrito-detalle")
+    @JsonBackReference("carrito-detalle")
     private Carrito carrito;
 }
