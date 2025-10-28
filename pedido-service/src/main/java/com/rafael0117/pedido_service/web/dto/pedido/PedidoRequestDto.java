@@ -10,7 +10,6 @@ import lombok.*;
 @NoArgsConstructor
 @Builder
 public class PedidoRequestDto {
-    private Long idUsuario;          // si prefieres, tómalo del JWT/Header
     private String direccionEnvio;
     private MetodoPago metodoPago;
 

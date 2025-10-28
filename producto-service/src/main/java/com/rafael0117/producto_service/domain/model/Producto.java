@@ -40,7 +40,8 @@ public class Producto {
 
     @Column(name = "categoria_id", nullable = false)
     private Long categoriaId;
-
+    @Enumerated(EnumType.STRING)
+    private CategoriaSexo categoriaSexo;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "categoria_id", insertable = false, updatable = false)
     private Categoria categoria;

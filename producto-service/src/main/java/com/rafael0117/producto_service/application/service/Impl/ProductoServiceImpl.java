@@ -94,6 +94,7 @@ public class ProductoServiceImpl implements ProductoService {
         p.setPrecio(dto.getPrecio());
         p.setStock(dto.getStock());
         p.setCategoriaId(dto.getCategoriaId());
+        p.setCategoriaSexo(dto.getCategoriaSexo());
 
         p.getTallas().clear();
         p.getTallas().addAll(Optional.ofNullable(dto.getTalla()).orElse(List.of()));

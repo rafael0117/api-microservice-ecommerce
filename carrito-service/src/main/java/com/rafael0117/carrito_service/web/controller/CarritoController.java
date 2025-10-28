@@ -9,7 +9,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 @RestController
 @RequestMapping("/api/carrito")
 @RequiredArgsConstructor
@@ -22,13 +21,8 @@ public class CarritoController {
     @PostMapping("/agregar")
     public ResponseEntity<Carrito> agregarProducto(@RequestBody DetalleCarrito detalle,
                                                    @RequestHeader("Authorization") String token) {
-        // 1️⃣ Obtener usuario autenticado desde auth-service
         UsuarioDTO usuario = usuarioClient.me(token);
-
-        // 2️⃣ Usar su ID real
         Long idUsuario = usuario.getId();
-
-        // 3️⃣ Agregar producto al carrito
         return ResponseEntity.ok(carritoService.agregarProducto(idUsuario, detalle));
     }
 
@@ -47,14 +41,11 @@ public class CarritoController {
         carritoService.eliminarProducto(usuario.getId(), productoId);
         return ResponseEntity.noContent().build();
     }
-
-    // 🧹 Vaciar carrito completo
     @DeleteMapping("/{idUsuario}/vaciar")
     public ResponseEntity<Void> vaciar(@PathVariable Long idUsuario) {
         carritoService.vaciarCarrito(idUsuario);
         return ResponseEntity.noContent().build();
     }
-
     @GetMapping("/{idUsuario}")
     public ResponseEntity<Carrito> obtenerCarritoPorId(@PathVariable Long idUsuario) {
         Carrito carrito = carritoService.obtenerCarrito(idUsuario);
