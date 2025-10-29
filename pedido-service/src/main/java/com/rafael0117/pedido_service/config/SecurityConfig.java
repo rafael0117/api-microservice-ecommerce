@@ -19,7 +19,8 @@ public class SecurityConfig {
                         .requestMatchers("/error").permitAll() // 👈 IMPORTANTE
                         .requestMatchers(HttpMethod.GET, "/api/pedidos/**").permitAll()
                         .requestMatchers(HttpMethod.POST, "/api/pedidos/**").permitAll()
-                        .anyRequest().authenticated()
+                        .requestMatchers(HttpMethod.PUT, "/api/pedidos/**").permitAll()
+                        .anyRequest().permitAll()
                 );
 
         return http.build();

@@ -12,7 +12,17 @@ spring:
     properties:
       hibernate:
         format_sql: true
-
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: mamanirafael324@gmail.com     # tu correo completo
+    password: hhvk tzve okps shmq          # tu contraseña de aplicación (NO tu contraseña normal)
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
 server:
   port: 8183
 eureka:
@@ -24,6 +34,8 @@ eureka:
   instance:
     prefer-ip-address: true
 app:
+  mail:
+    from: "MiTiendaRopa <mamanirafael324@gmail.com>"
   carrito:
     base-url: http://localhost:8185
   producto:
@@ -32,6 +44,8 @@ app:
     base-url: http://localhost:9000
 logging:
   level:
+    org.springframework.mail: DEBUG
+    org.springframework.boot.autoconfigure.mail: DEBUG
     org.springframework.security: DEBUG
     org.springframework.security.web: DEBUG
     org.springframework.security.oauth2: DEBUG

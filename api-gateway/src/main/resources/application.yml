@@ -1,8 +1,18 @@
 spring:
   application:
     name: api-gateway
+
   cloud:
     gateway:
+      # 👇 Aquí añadimos la configuración global de CORS
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins: "http://localhost:4200"  # frontend Angular
+            allowedMethods: "*"
+            allowedHeaders: "*"
+            allowCredentials: true
+
       server:
         webflux:
           routes:
@@ -10,15 +20,28 @@ spring:
               uri: lb://producto-service
               predicates:
                 - Path=/api/productos/**
+            - id: producto-service
+              uri: lb://producto-service
+              predicates:
                 - Path=/api/categorias/**
             - id: pedido-service
               uri: lb://pedido-service
               predicates:
                 - Path=/api/pedidos/**
+            - id: carrito-service
+              uri: lb://carrito-service
+              predicates:
+                - Path=/api/carrito/**
             - id: auth-service
               uri: lb://auth-service
               predicates:
                 - Path=/api/auth/**
+          default-filters:
+            - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
+
+  main:
+    web-application-type: reactive
+
 server:
   port: 8080
 
@@ -26,7 +49,7 @@ eureka:
   client:
     register-with-eureka: true
     fetch-registry: true
-  service-url:
-    defaultZone: http://localhost:8761/eureka
+    service-url:
+      defaultZone: http://localhost:8761/eureka
   instance:
     prefer-ip-address: true

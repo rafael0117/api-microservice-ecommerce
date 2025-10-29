@@ -8,14 +8,20 @@ import org.springframework.security.oauth2.server.resource.authentication.JwtAut
 
 @Configuration
 public class FeignSecurityConfig {
+
     @Bean
-    RequestInterceptor bearerTokenInterceptor(){
-        return template -> {
-            var auth = SecurityContextHolder.getContext().getAuthentication();
-            if (auth instanceof JwtAuthenticationToken jwt){
-                template.header
-                        ("Authorization", "Bearer "
-                                + jwt.getToken().getTokenValue());
+    public RequestInterceptor requestInterceptor() {
+        return requestTemplate -> {
+            if (!requestTemplate.headers().containsKey("Authorization")) {
+                return; // no token, no hacer nada
+            }
+            // Reenvía el header existente
+            String token = requestTemplate.headers().get("Authorization")
+                    .stream()
+                    .findFirst()
+                    .orElse(null);
+            if (token != null) {
+                requestTemplate.header("Authorization", token);
             }
         };
     }

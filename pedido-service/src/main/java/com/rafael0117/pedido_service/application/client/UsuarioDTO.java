@@ -6,6 +6,9 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+
+import java.util.Set;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -13,4 +16,6 @@ import lombok.NoArgsConstructor;
 public class UsuarioDTO {
     private Long id;
     private String username;
+    private String email;
+    private Set<RoleDTO> roles;
 }

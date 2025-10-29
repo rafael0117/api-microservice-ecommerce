@@ -7,6 +7,8 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="api-gateway" />
+        <module name="eureka-server" />
       </profile>
       <profile name="Annotation profile for producto-service" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
@@ -18,7 +20,17 @@
         </processorPath>
         <module name="producto-service" />
       </profile>
-      <profile name="Annotation profile for carrito-service" enabled="true">
+      <profile name="Annotation profile for auth-service" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="false">
+          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.42/lombok-1.18.42.jar" />
+        </processorPath>
+        <module name="auth-service" />
+        <module name="carrito-service" />
+      </profile>
+      <profile name="Annotation profile for pedido-service" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
@@ -26,14 +38,10 @@
           <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.40/lombok-1.18.40.jar" />
         </processorPath>
         <module name="pedido-service" />
-        <module name="auth-service" />
-        <module name="carrito-service" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="api-gateway" target="21" />
       <module name="auth-server" target="21" />
-      <module name="eureka-server" target="21" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">

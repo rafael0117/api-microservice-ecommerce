@@ -2,6 +2,7 @@ package com.rafael0117.auth_service.domain.model;
 
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
 import lombok.*;
 
 import java.util.HashSet;
@@ -22,6 +23,9 @@ public class User {
 
     @Column(nullable = false, length = 120)
     private String password;
+    @Email
+    @Column(unique = true, nullable = false, length = 120)
+    private String email;
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(

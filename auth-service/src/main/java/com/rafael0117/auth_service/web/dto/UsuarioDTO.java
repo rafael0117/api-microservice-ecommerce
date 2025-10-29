@@ -18,5 +18,6 @@ import java.util.Set;
 public class UsuarioDTO  {
     private Long id;
     private String username;
+    private String email;
     private Set<Role> roles; // nombres de rol (p.ej. ["ADMIN","USER"])
 }

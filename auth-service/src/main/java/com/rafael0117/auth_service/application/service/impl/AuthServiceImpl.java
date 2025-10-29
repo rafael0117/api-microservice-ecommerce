@@ -149,6 +149,7 @@ public class AuthServiceImpl implements AuthService {
         User usuario = User.builder()
                 .username(request.getUsername())
                 .password(passwordEncoder.encode(request.getPassword()))
+                .email(request.getEmail())
                 .roles(Set.of(rolUser))
                 .build();
 
