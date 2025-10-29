@@ -16,6 +16,6 @@ public class DetalleCarritoDto {
     private String descripcion;
     private BigDecimal precio;
     private Integer cantidad;
-    private List<String> tallas;
-    private List<String> colores;
+    private String talla;
+    private String color;
 }

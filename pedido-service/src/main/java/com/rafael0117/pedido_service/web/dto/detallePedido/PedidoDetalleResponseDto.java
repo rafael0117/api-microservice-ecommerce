@@ -15,8 +15,7 @@ public class PedidoDetalleResponseDto {
     private String nombreProducto;
     private BigDecimal precioUnitario;
     private Integer cantidad;
-    private List<String> tallas;
-    private List<String> colores;
-    // ✅ lista
+    private String talla;
+    private String color;
     private BigDecimal totalLinea;
 }

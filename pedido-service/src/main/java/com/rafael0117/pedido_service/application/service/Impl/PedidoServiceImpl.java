@@ -17,6 +17,7 @@ import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -61,6 +62,7 @@ public class PedidoServiceImpl implements PedidoService {
                 .envio(BigDecimal.ZERO.setScale(2))
                 .descuento(BigDecimal.ZERO.setScale(2))
                 .total(BigDecimal.ZERO.setScale(2))
+                .detalles(new ArrayList<>())
                 .build();
 
         BigDecimal subtotal = BigDecimal.ZERO.setScale(2);
@@ -79,14 +81,16 @@ public class PedidoServiceImpl implements PedidoService {
                     .descripcion(d.getDescripcion())
                     .precioUnitario(precioUnitario)
                     .cantidad(d.getCantidad())
-                    .tallas(d.getTallas())
-                    .colores(d.getColores())
+                    .talla(d.getTalla())      // directamente como String
+                    .color(d.getColor())     // directamente como String
                     .totalLinea(totalLinea)
                     .build();
 
             pedido.getDetalles().add(det);
             subtotal = subtotal.add(totalLinea).setScale(2, RoundingMode.HALF_UP);
         }
+
+
 
         BigDecimal impuesto = subtotal.multiply(IGV).setScale(2, RoundingMode.HALF_UP);
         BigDecimal total = subtotal.add(impuesto).setScale(2, RoundingMode.HALF_UP);
@@ -95,8 +99,10 @@ public class PedidoServiceImpl implements PedidoService {
         pedido.setImpuesto(impuesto);
         pedido.setTotal(total);
 
+        // Guardar pedido
         pedido = pedidoRepository.save(pedido);
 
+        // Vaciar carrito
         try {
             carritoClient.vaciar(idUsuario);
         } catch (Exception e) {
@@ -105,6 +111,7 @@ public class PedidoServiceImpl implements PedidoService {
 
         return pedidoMapper.toDto(pedido);
     }
+
     @Transactional
     @Override
     public PedidoResponseDto actualizarComoAdmin(Long idPedido, PedidoAdminUpdateRequest req) {

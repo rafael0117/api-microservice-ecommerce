@@ -28,16 +28,8 @@ public class PedidoDetalle {
 
     private Integer cantidad;
 
-    // ✅ Listas para tallas y colores seleccionados
-    @ElementCollection
-    @CollectionTable(name = "pedido_detalle_tallas", joinColumns = @JoinColumn(name = "detalle_id"))
-    @Column(name = "talla")
-    private List<String> tallas;
-
-    @ElementCollection
-    @CollectionTable(name = "pedido_detalle_colores", joinColumns = @JoinColumn(name = "detalle_id"))
-    @Column(name = "color")
-    private List<String> colores;
+    private String talla;
+    private String color;
 
     @Column(precision = 18, scale = 2)
     private BigDecimal totalLinea;

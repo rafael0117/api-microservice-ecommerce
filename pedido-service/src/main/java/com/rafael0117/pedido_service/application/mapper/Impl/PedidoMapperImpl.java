@@ -51,8 +51,8 @@ public class PedidoMapperImpl implements PedidoMapper {
                 .nombreProducto(d.getNombreProducto())
                 .precioUnitario(d1(d.getPrecioUnitario()))
                 .cantidad(d.getCantidad())
-                .tallas(d.getTallas())     // ✅ aquí
-                .colores(d.getColores())   // ✅ aquí
+                .talla(d.getTalla())     // ✅ aquí
+                .color(d.getColor())   // ✅ aquí
                 .totalLinea(d1(d.getTotalLinea()))
                 .build();
     }
