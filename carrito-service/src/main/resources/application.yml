@@ -12,6 +12,20 @@ spring:
     properties:
       hibernate:
         format_sql: true
+  kafka:
+    bootstrap-servers: localhost:9092
+    consumer:
+      group-id: carrito-service-group-v2
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.ErrorHandlingDeserializer
+      properties:
+        spring.deserializer.value.delegate.class: org.springframework.kafka.support.serializer.JsonDeserializer
+        spring.json.trusted.packages: "com.rafael0117.producto_service.kafka.events,com.rafael0117.carrito_service.kafka.events"
+        spring.json.value.default.type: com.rafael0117.producto_service.kafka.events.ProductChangedPayload
+    listener:
+      ack-mode: record
+
 server:
   port: 8185
 eureka:
@@ -27,3 +41,6 @@ app:
     base-url: http://localhost:9000
   producto:
     base-url: http://localhost:8181
+kafka:
+  topics:
+    productChanged: product-events

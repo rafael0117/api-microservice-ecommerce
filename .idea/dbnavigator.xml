@@ -4,9 +4,17 @@
     <mappings />
     <preferences />
   </component>
+  <component name="DBNavigator.Project.DataEditorManager">
+    <record-view-column-sorting-type value="BY_INDEX" />
+    <value-preview-text-wrapping value="true" />
+    <value-preview-pinned value="false" />
+  </component>
   <component name="DBNavigator.Project.DatabaseAssistantManager">
     <assistants>
       <assistant-state connection-id="2c393f85-e259-4b01-94ab-e8e502aefa7f" default-profile-name="" selected-conversation-id="" assistant-type="GENERIC" availability="UNAVAILABLE" acknowledgement="NONE">
+        <conversations />
+      </assistant-state>
+      <assistant-state connection-id="962c84df-ad70-47d9-831b-0e417851c844" default-profile-name="" selected-conversation-id="" assistant-type="GENERIC" availability="UNAVAILABLE" acknowledgement="NONE">
         <conversations />
       </assistant-state>
       <assistant-state connection-id="virtual-mysql-connection" default-profile-name="" selected-conversation-id="" assistant-type="GENERIC" availability="UNAVAILABLE" acknowledgement="NONE">
@@ -14,13 +22,32 @@
       </assistant-state>
     </assistants>
   </component>
+  <component name="DBNavigator.Project.DatabaseBrowserManager">
+    <autoscroll-to-editor value="false" />
+    <autoscroll-from-editor value="true" />
+    <show-object-properties value="true" />
+    <loaded-nodes />
+  </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="2c393f85-e259-4b01-94ab-e8e502aefa7f">
       <console name="Connection" type="STANDARD" schema="mysql" session="Main" />
     </connection>
   </component>
+  <component name="DBNavigator.Project.DatabaseEditorStateManager">
+    <last-used-providers />
+  </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
     <open-files />
+  </component>
+  <component name="DBNavigator.Project.DatabaseSessionManager">
+    <connection id="962c84df-ad70-47d9-831b-0e417851c844" />
+  </component>
+  <component name="DBNavigator.Project.ExecutionManager">
+    <retain-sticky-names value="false" />
+  </component>
+  <component name="DBNavigator.Project.ObjectQuickFilterManager">
+    <last-used-operator value="EQUAL" />
+    <filters />
   </component>
   <component name="DBNavigator.Project.Settings">
     <connections>
@@ -553,5 +580,9 @@
         </visibility-settings>
       </environment>
     </general-settings>
+  </component>
+  <component name="DBNavigator.Project.StatementExecutionManager">
+    <execution-variables />
+    <execution-variable-types />
   </component>
 </project>

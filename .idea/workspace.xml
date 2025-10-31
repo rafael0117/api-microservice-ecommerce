@@ -5,12 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="14df6a6c-9300-48a5-a93f-30265e99527f" name="Changes" comment="ultimos cambios">
+      <change afterPath="$PROJECT_DIR$/carrito-service/src/main/java/com/rafael0117/carrito_service/kafka/KafkaProducerConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/carrito-service/src/main/java/com/rafael0117/carrito_service/kafka/ProductEventsProducer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/carrito-service/src/main/java/com/rafael0117/carrito_service/kafka/config/KafkaConsumerConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/carrito-service/src/main/java/com/rafael0117/carrito_service/kafka/consumers/ProductEventsConsumer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/carrito-service/src/main/java/com/rafael0117/carrito_service/kafka/events/ProductChangedPayload.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/producto-service/src/main/java/com/rafael0117/producto_service/common/events/ProductEvent.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/producto-service/src/main/java/com/rafael0117/producto_service/kafka/KafkaProducerConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/producto-service/src/main/java/com/rafael0117/producto_service/kafka/ProductEventsProducer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/producto-service/src/main/java/com/rafael0117/producto_service/kafka/events/ProductChangedPayload.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dbnavigator.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dbnavigator.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pedido-service/src/main/java/com/rafael0117/pedido_service/application/client/DetalleCarritoDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/pedido-service/src/main/java/com/rafael0117/pedido_service/application/client/DetalleCarritoDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pedido-service/src/main/java/com/rafael0117/pedido_service/application/mapper/Impl/PedidoMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/pedido-service/src/main/java/com/rafael0117/pedido_service/application/mapper/Impl/PedidoMapperImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pedido-service/src/main/java/com/rafael0117/pedido_service/application/service/Impl/PedidoServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/pedido-service/src/main/java/com/rafael0117/pedido_service/application/service/Impl/PedidoServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pedido-service/src/main/java/com/rafael0117/pedido_service/domain/model/PedidoDetalle.java" beforeDir="false" afterPath="$PROJECT_DIR$/pedido-service/src/main/java/com/rafael0117/pedido_service/domain/model/PedidoDetalle.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pedido-service/src/main/java/com/rafael0117/pedido_service/web/dto/detallePedido/PedidoDetalleResponseDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/pedido-service/src/main/java/com/rafael0117/pedido_service/web/dto/detallePedido/PedidoDetalleResponseDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/carrito-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/carrito-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/carrito-service/src/main/java/com/rafael0117/carrito_service/application/service/Impl/CarritoServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/carrito-service/src/main/java/com/rafael0117/carrito_service/application/service/Impl/CarritoServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/carrito-service/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/carrito-service/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/producto-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/producto-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/producto-service/src/main/java/com/rafael0117/producto_service/application/service/Impl/ProductoServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/producto-service/src/main/java/com/rafael0117/producto_service/application/service/Impl/ProductoServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/producto-service/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/producto-service/src/main/resources/application.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,6 +55,9 @@
     &quot;accountId&quot;: &quot;6ffbc2e4-2982-4f77-9434-da75667df9c9&quot;
   }
 }</component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 0
 }</component>
@@ -79,7 +94,7 @@
     "git-widget-placeholder": "master",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "F:/Cibertec/DAWII_CICLO_6/Proyecto_DAWII/pedido-service/src/main/java/com/rafael0117/pedido_service/application/client",
+    "last_opened_file_path": "F:/Cibertec/DAWII_CICLO_6/Proyecto_DAWII/carrito-service/src/main/java/com/rafael0117/carrito_service/kafka",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
@@ -89,9 +104,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="F:\Cibertec\DAWII_CICLO_6\Proyecto_DAWII\carrito-service\src\main\java\com\rafael0117\carrito_service\kafka" />
+      <recent name="F:\Cibertec\DAWII_CICLO_6\Proyecto_DAWII\carrito-service\src\main\java\com\rafael0117\carrito_service" />
+      <recent name="F:\Cibertec\DAWII_CICLO_6\Proyecto_DAWII\producto-service\src\main\java\com\rafael0117\producto_service" />
       <recent name="F:\Cibertec\DAWII_CICLO_6\Proyecto_DAWII\pedido-service\src\main\java\com\rafael0117\pedido_service\application\client" />
       <recent name="F:\Cibertec\DAWII_CICLO_6\Proyecto_DAWII\auth-service\src\main\java\com\rafael0117\auth_service\config" />
-      <recent name="F:\Cibertec\DAWII_CICLO_6\Proyecto_DAWII\carrito-service\src\main\java\com\rafael0117\carrito_service\application" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="F:\Cibertec\DAWII_CICLO_6\Proyecto_DAWII\auth-service\src\main\java\com\rafael0117" />
@@ -104,7 +121,7 @@
       <recent name="com.rafael0117.pedido_service.application.client" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.PedidoServiceApplication">
+  <component name="RunManager" selected="Application.CarritoServiceApplication">
     <configuration name="ApiGatewayApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.rafael0117.api_gateway.ApiGatewayApplication" />
       <module name="api-gateway" />
@@ -131,12 +148,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="EurekaServerApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.rafael0117.eureka_server.EurekaServerApplication" />
-      <module name="eureka-server" />
+    <configuration name="CarritoServiceApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.rafael0117.carrito_service.CarritoServiceApplication" />
+      <module name="carrito-service" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.rafael0117.eureka_server.*" />
+          <option name="PATTERN" value="com.rafael0117.carrito_service.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -144,12 +161,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PedidoServiceApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.rafael0117.pedido_service.PedidoServiceApplication" />
-      <module name="pedido-service" />
+    <configuration name="EurekaServerApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.rafael0117.eureka_server.EurekaServerApplication" />
+      <module name="eureka-server" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.rafael0117.pedido_service.*" />
+          <option name="PATTERN" value="com.rafael0117.eureka_server.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -172,10 +189,10 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.PedidoServiceApplication" />
+        <item itemvalue="Application.CarritoServiceApplication" />
+        <item itemvalue="Application.ProductoServiceApplication" />
         <item itemvalue="Application.AuthServiceApplication" />
         <item itemvalue="Application.ApiGatewayApplication" />
-        <item itemvalue="Application.ProductoServiceApplication" />
         <item itemvalue="Application.EurekaServerApplication" />
       </list>
     </recent_temporary>

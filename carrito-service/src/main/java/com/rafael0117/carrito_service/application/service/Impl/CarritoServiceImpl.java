@@ -23,6 +23,9 @@ public class CarritoServiceImpl implements CarritoService {
     private final DetalleCarritoRepository detalleRepository;
     private final ProductoClient productoClient;
 
+    // ✅ Límite máximo por producto
+    private static final int LIMITE_POR_PRODUCTO = 10;
+
     @Override
     public Carrito obtenerCarrito(Long idUsuario) {
         return carritoRepository.findByIdUsuario(idUsuario)
@@ -57,7 +60,6 @@ public class CarritoServiceImpl implements CarritoService {
         // 3) Validar talla / color seleccionados (si el producto los maneja)
         String tallaSel  = detalleEntrada.getTalla();
         String colorSel  = detalleEntrada.getColor();
-        // Normaliza a minúsculas para comparar (opcional)
         String tallaSelNorm = tallaSel != null ? tallaSel.trim().toLowerCase() : null;
         String colorSelNorm = colorSel != null ? colorSel.trim().toLowerCase() : null;
 
@@ -86,19 +88,31 @@ public class CarritoServiceImpl implements CarritoService {
         if (existenteOpt.isPresent()) {
             // 5) Sumar cantidades a la MISMA variante
             DetalleCarrito existente = existenteOpt.get();
-            existente.setCantidad(existente.getCantidad() + detalleEntrada.getCantidad());
+            int nuevaCantidad = existente.getCantidad() + detalleEntrada.getCantidad();
+
+            // ✅ Regla: máximo 10 unidades por producto
+            if (nuevaCantidad > LIMITE_POR_PRODUCTO) {
+                throw new RuntimeException("Solo puedes agregar hasta " + LIMITE_POR_PRODUCTO + " unidades del mismo producto");
+            }
+
+            existente.setCantidad(nuevaCantidad);
             detalleRepository.save(existente);
         } else {
+            // ✅ Regla: no permitir más de 10 en una sola adición
+            if (detalleEntrada.getCantidad() > LIMITE_POR_PRODUCTO) {
+                throw new RuntimeException("Solo puedes agregar hasta " + LIMITE_POR_PRODUCTO + " unidades del mismo producto");
+            }
+
             // 6) Crear nuevo detalle SOLO con la selección
             DetalleCarrito nuevo = new DetalleCarrito();
             nuevo.setIdProducto(producto.getId());
-            nuevo.setNombreProducto(producto.getNombre());      // snapshot
-            nuevo.setDescripcion(producto.getDescripcion());    // snapshot corto si quieres
+            nuevo.setNombreProducto(producto.getNombre());
+            nuevo.setDescripcion(producto.getDescripcion());
             nuevo.setPrecio(producto.getPrecio());
             nuevo.setCantidad(detalleEntrada.getCantidad());
-            nuevo.setTalla(tallaSel);                           // <-- selección del usuario
-            nuevo.setColor(colorSel);                           // <-- selección del usuario
-            // imagen principal snapshot (no guardes todas)
+            nuevo.setTalla(tallaSel);
+            nuevo.setColor(colorSel);
+
             String imgPrincipal = (producto.getImagenesBase64() != null && !producto.getImagenesBase64().isEmpty())
                     ? producto.getImagenesBase64().get(0)
                     : null;
@@ -112,11 +126,9 @@ public class CarritoServiceImpl implements CarritoService {
         }
 
         carritoRepository.save(carrito);
-        // Devuelve el carrito actualizado (si quieres evitar lazy, usa fetch join o mapea a DTO)
         return carritoRepository.findById(carrito.getId())
                 .orElseThrow(() -> new RuntimeException("Error al actualizar el carrito"));
     }
-
 
     @Override
     @Transactional

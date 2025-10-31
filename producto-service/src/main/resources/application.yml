@@ -12,6 +12,19 @@ spring:
     properties:
       hibernate:
         format_sql: true
+  kafka:
+    bootstrap-servers: localhost:9092
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      properties:
+        spring.json.add.type.headers: false
+        spring.json.value.default.type: com.rafael0117.producto_service.kafka.events.ProductChangedPayload
+    topic:
+      product-changed: product-events   # <- usar el tópico que ya existe
+
+kafka:
+  enabled: true
 
 
 server:

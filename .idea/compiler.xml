@@ -16,9 +16,10 @@
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="false">
           <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.40/lombok-1.18.40.jar" />
-          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.40/lombok-1.18.40.jar" />
         </processorPath>
         <module name="producto-service" />
+        <module name="pedido-service" />
+        <module name="carrito-service" />
       </profile>
       <profile name="Annotation profile for auth-service" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
@@ -28,16 +29,6 @@
           <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.42/lombok-1.18.42.jar" />
         </processorPath>
         <module name="auth-service" />
-        <module name="carrito-service" />
-      </profile>
-      <profile name="Annotation profile for pedido-service" enabled="true">
-        <sourceOutputDir name="target/generated-sources/annotations" />
-        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
-        <outputRelativeToContentRoot value="true" />
-        <processorPath useClasspath="false">
-          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.40/lombok-1.18.40.jar" />
-        </processorPath>
-        <module name="pedido-service" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
